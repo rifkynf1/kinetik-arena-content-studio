@@ -206,7 +206,8 @@ loadSentimentBtn.addEventListener("click", async () => {
       tr.innerHTML = `
         <td class="p-2 text-slate-400">#${item.id}</td>
         <td class="p-2 font-medium ${sentimentColor} capitalize">${item.sentiment}</td>
-        <td class="p-2 text-slate-300">${item.theme}</td>
+        <td class="p-2 text-slate-300 truncate max-w-[120px]" title="${item.theme}">${item.theme}</td>
+        <td class="p-2 text-slate-400 text-xs pr-4">${item.text || ''}</td>
       `;
       tbody.appendChild(tr);
     });

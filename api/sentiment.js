@@ -51,13 +51,18 @@ module.exports = async (req, res) => {
 
   try {
     let commentsBlock = "";
+    let commentsMap = {};
 
     if (req.method === "POST" && req.body && req.body.customCsvText) {
       // Opsi 1: User upload CSV custom
       const Papa = require("papaparse");
       const { data } = Papa.parse(req.body.customCsvText, { header: true, skipEmptyLines: true });
       if (!data || !data.length) throw new Error("CSV kosong atau format salah. Pastikan memiliki header (id, platform, comment).");
-      commentsBlock = data.map((row, idx) => `#${row.id || idx+1} [${row.platform || 'unknown'}]: "${row.comment || row.komentar || ''}"`).join("\n");
+      commentsBlock = data.map((row, idx) => {
+        const cId = String(row.id || idx+1);
+        commentsMap[cId] = row.comment || row.komentar || '';
+        return `#${cId} [${row.platform || 'unknown'}]: "${commentsMap[cId]}"`;
+      }).join("\n");
     } else {
       // Opsi 2: Dropdown pilih dataset lokal
       const datasetName = (req.body && req.body.datasetName) ? req.body.datasetName : "comments_dataset.csv";
@@ -69,7 +74,11 @@ module.exports = async (req, res) => {
         });
         return;
       }
-      commentsBlock = comments.map((row) => `#${row.id} [${row.platform}]: "${row.comment}"`).join("\n");
+      commentsBlock = comments.map((row) => {
+        const cId = String(row.id);
+        commentsMap[cId] = row.comment;
+        return `#${cId} [${row.platform}]: "${row.comment}"`;
+      }).join("\n");
     }
 
     const prompt = `Berikut adalah daftar komentar publik seputar Nexus Cube (Nexus Cube)
@@ -96,6 +105,13 @@ persis dengan nomor id komentar aslinya (dalam bentuk string).`;
       responseSchema: RESPONSE_SCHEMA,
       temperature: 0.2,
     });
+
+    if (result && result.items) {
+      result.items = result.items.map(item => ({
+        ...item,
+        text: commentsMap[String(item.id)] || ""
+      }));
+    }
 
     res.status(200).json({ ok: true, data: result });
   } catch (err) {

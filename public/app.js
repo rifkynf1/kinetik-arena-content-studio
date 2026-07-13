@@ -132,7 +132,7 @@ exportBtn.addEventListener("click", () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `kinetik-arena-content-${Date.now()}.txt`;
+  a.download = `nexus-cube-content-${Date.now()}.txt`;
   a.click();
   URL.revokeObjectURL(url);
 });

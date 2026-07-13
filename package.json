@@ -1,7 +1,7 @@
 {
   "name": "ai-content-studio-brand-voice-assistant",
   "version": "1.0.0",
-  "description": "Project 5: AI Content Studio & Brand-Voice Assistant (student prototype)",
+  "description": "Nexus Cube AI Content Studio & Brand-Voice Assistant",
   "private": true,
   "type": "commonjs",
   "scripts": {

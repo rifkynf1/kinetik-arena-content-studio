@@ -1,7 +1,6 @@
-# Project 5: AI Content Studio & Brand-Voice Assistant
+# AI Content Studio & Brand-Voice Assistant - Nexus Team
 
-Prototipe tugas mahasiswa (bukan untuk production) — **Nexus Cube**, Event Organizer (EO)
-turnamen esports & gaming fiktif.
+**Nexus Cube**, Event Organizer (EO) turnamen esports & gaming.
 
 ## Struktur Proyek
 
@@ -59,5 +58,5 @@ Buka `http://localhost:3000`.
 
 ## Catatan
 
-- Ini adalah prototipe untuk keperluan belajar/tugas kuliah — belum ada autentikasi, rate-limiting, caching, atau validasi input yang ketat seperti pada aplikasi production sungguhan.
+- Aplikasi internal untuk operasional Nexus Team. Belum ada autentikasi, rate-limiting, caching, atau validasi input yang ketat seperti pada aplikasi production publik.
 - Data di `/data/*.csv` adalah data contoh (dummy), silakan diganti dengan data asli sesuai kebutuhan.

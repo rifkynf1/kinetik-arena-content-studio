@@ -28,8 +28,8 @@ function loadSamplePosts() {
   return readCSV("data/sample_posts.csv");
 }
 
-function loadComments() {
-  return readCSV("data/comments_dataset.csv");
+function loadComments(filename = "comments_dataset.csv") {
+  return readCSV(`data/${filename}`);
 }
 
 module.exports = { loadRules, loadSamplePosts, loadComments };

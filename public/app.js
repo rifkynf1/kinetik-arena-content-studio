@@ -138,13 +138,42 @@ exportBtn.addEventListener("click", () => {
 });
 
 // ---- Sentiment Dashboard ----
+const datasetSelect = document.getElementById("datasetSelect");
+const customCsvFile = document.getElementById("customCsvFile");
+
+if (datasetSelect) {
+  datasetSelect.addEventListener("change", () => {
+    if (datasetSelect.value === "upload") {
+      customCsvFile.classList.remove("hidden");
+    } else {
+      customCsvFile.classList.add("hidden");
+    }
+  });
+}
+
 loadSentimentBtn.addEventListener("click", async () => {
   setBusy(loadSentimentBtn, true, "MENGANALISIS...", "MUAT ANALISIS KOMENTAR");
   sentimentStatus.textContent = "Mengambil & menganalisis komentar dari dataset...";
   sentimentStatus.className = "text-sm text-slate-400";
 
   try {
-    const res = await fetch("/api/sentiment");
+    let requestBody = {};
+    const mode = datasetSelect ? datasetSelect.value : "comments_dataset.csv";
+
+    if (mode === "upload") {
+      const file = customCsvFile.files[0];
+      if (!file) throw new Error("Silakan pilih file CSV terlebih dahulu.");
+      const fileText = await file.text();
+      requestBody = { customCsvText: fileText };
+    } else {
+      requestBody = { datasetName: mode };
+    }
+
+    const res = await fetch("/api/sentiment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody)
+    });
     const payload = await res.json();
     if (!res.ok || !payload.ok) throw new Error(payload.error || "Gagal memuat analisis sentimen.");
 

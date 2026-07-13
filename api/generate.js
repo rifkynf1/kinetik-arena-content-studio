@@ -54,7 +54,7 @@ module.exports = async (req, res) => {
     const samplePosts = loadSamplePosts();
     const fewShotBlock = buildFewShotBlock(samplePosts);
 
-    const prompt = `Berikut adalah contoh-contoh konten Kinetik Arena sebelumnya (few-shot reference).
+    const prompt = `Berikut adalah contoh-contoh konten Nexus Cube sebelumnya (few-shot reference).
 Pelajari gaya, struktur, istilah gaming, dan nada bicaranya:
 
 ${fewShotBlock}

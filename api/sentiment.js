@@ -44,26 +44,35 @@ const RESPONSE_SCHEMA = {
 };
 
 module.exports = async (req, res) => {
-  if (req.method !== "GET") {
-    res.status(405).json({ error: "Method not allowed. Gunakan GET." });
+  if (req.method !== "GET" && req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed. Gunakan GET atau POST." });
     return;
   }
 
   try {
-    const comments = loadComments();
-    if (!comments.length) {
-      res.status(200).json({
-        ok: true,
-        data: { summary: { total: 0, positive: 0, negative: 0, neutral: 0 }, top_themes: [], items: [] },
-      });
-      return;
+    let commentsBlock = "";
+
+    if (req.method === "POST" && req.body && req.body.customCsvText) {
+      // Opsi 1: User upload CSV custom
+      const Papa = require("papaparse");
+      const { data } = Papa.parse(req.body.customCsvText, { header: true, skipEmptyLines: true });
+      if (!data || !data.length) throw new Error("CSV kosong atau format salah. Pastikan memiliki header (id, platform, comment).");
+      commentsBlock = data.map((row, idx) => `#${row.id || idx+1} [${row.platform || 'unknown'}]: "${row.comment || row.komentar || ''}"`).join("\n");
+    } else {
+      // Opsi 2: Dropdown pilih dataset lokal
+      const datasetName = (req.body && req.body.datasetName) ? req.body.datasetName : "comments_dataset.csv";
+      const comments = loadComments(datasetName);
+      if (!comments.length) {
+        res.status(200).json({
+          ok: true,
+          data: { summary: { total: 0, positive: 0, negative: 0, neutral: 0 }, top_themes: [], items: [] },
+        });
+        return;
+      }
+      commentsBlock = comments.map((row) => `#${row.id} [${row.platform}]: "${row.comment}"`).join("\n");
     }
 
-    const commentsBlock = comments
-      .map((row) => `#${row.id} [${row.platform}]: "${row.comment}"`)
-      .join("\n");
-
-    const prompt = `Berikut adalah daftar komentar peserta/penonton turnamen esports Kinetik Arena
+    const prompt = `Berikut adalah daftar komentar publik seputar Nexus Cube (Nexus Cube)
 dari berbagai platform (Discord, Twitter, Instagram, Telegram). Komentar seputar war tiket,
 jadwal match, kualitas server/streaming, bracket, hingga pelayanan panitia:
 
@@ -82,7 +91,7 @@ persis dengan nomor id komentar aslinya (dalam bentuk string).`;
 
     const result = await generateJSON({
       systemInstruction:
-        "Kamu adalah AI analyst yang objektif untuk menganalisis sentimen dan tema komentar peserta/penonton turnamen esports Kinetik Arena. Jangan menambahkan opini pribadi, hanya klasifikasikan berdasarkan isi komentar.",
+        "Kamu adalah AI analyst yang objektif untuk menganalisis sentimen dan tema komentar peserta/penonton turnamen esports Nexus Cube. Jangan menambahkan opini pribadi, hanya klasifikasikan berdasarkan isi komentar.",
       prompt,
       responseSchema: RESPONSE_SCHEMA,
       temperature: 0.2,

@@ -1,6 +1,6 @@
 # Project 5: AI Content Studio & Brand-Voice Assistant
 
-Prototipe tugas mahasiswa (bukan untuk production) — **Kinetik Arena**, Event Organizer (EO)
+Prototipe tugas mahasiswa (bukan untuk production) — **Nexus Cube**, Event Organizer (EO)
 turnamen esports & gaming fiktif.
 
 ## Struktur Proyek
@@ -53,7 +53,7 @@ Buka `http://localhost:3000`.
 
 ## Alur Fitur
 
-1. **Brief → Konten 4 Format**: `public/index.html` kirim brief ke `POST /api/generate`. Endpoint ini membaca `rules.md` (brand-voice Kinetik Arena) + `data/sample_posts.csv` (few-shot) lalu memanggil Gemini dengan `responseSchema` supaya outputnya terstruktur: Broadcast WhatsApp, Pengumuman Discord/Telegram, Utas X/Twitter (array tweet), Caption Instagram — plus saran jadwal posting.
+1. **Brief → Konten 4 Format**: `public/index.html` kirim brief ke `POST /api/generate`. Endpoint ini membaca `rules.md` (brand-voice Nexus Cube) + `data/sample_posts.csv` (few-shot) lalu memanggil Gemini dengan `responseSchema` supaya outputnya terstruktur: Broadcast WhatsApp, Pengumuman Discord/Telegram, Utas X/Twitter (array tweet), Caption Instagram — plus saran jadwal posting.
 2. **Approval UI**: tiap kartu format bisa diedit langsung di textarea (utas Twitter disimpan sebagai teks, tiap tweet dipisah baris kosong), tombol **Setujui** menyimpan versi final ke state, dan **Export** menggabungkan semua yang disetujui jadi satu file `.txt`.
 3. **Sentiment & Theme Digest**: tombol di dashboard memanggil `GET /api/sentiment`, yang membaca `data/comments_dataset.csv` (komentar seputar war tiket, jadwal match, server/lag, bracket, dsb) dan meminta Gemini melakukan zero-shot classification (sentimen + tema utama), lalu ditampilkan sebagai kartu statistik + tabel rincian.
 

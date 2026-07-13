@@ -93,13 +93,23 @@
         <div class="pt-6 border-t border-cyan-900/30">
           <h3 class="text-[10px] uppercase tracking-widest text-gray-500 mb-4 px-2">Data Analysis</h3>
           <div class="bg-cyber-navy/50 p-4 rounded-lg border border-cyan-900/30">
-            <h4 class="font-cyber text-[11px] text-white tracking-wider mb-4 border-b border-cyber-cyan/20 pb-2">SENTIMENT & THEME DIGEST</h4>
+            <h4 class="font-cyber text-[11px] text-white tracking-wider mb-3 border-b border-cyber-cyan/20 pb-2">SENTIMENT & THEME DIGEST</h4>
             
+            <!-- Dropdown Dataset -->
+            <div class="mb-3">
+              <select id="datasetSelect" class="w-full bg-black/40 border border-cyan-900/50 rounded p-2 text-gray-300 font-sans text-[10px] focus:ring-1 focus:ring-cyber-cyan focus:border-cyber-cyan outline-none transition-colors">
+                <option value="comments_dataset.csv">Data: Turnamen Esports (Default)</option>
+                <option value="comments_event_offline.csv">Data: Event Offline (Exhibition)</option>
+                <option value="upload">📁 Upload File CSV Sendiri...</option>
+              </select>
+              <input type="file" id="customCsvFile" accept=".csv" class="hidden mt-2 w-full text-[9px] text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[9px] file:font-semibold file:bg-cyber-cyan/20 file:text-cyber-cyan hover:file:bg-cyber-cyan/30" />
+            </div>
+
             <!-- Tombol load dipindah ke sidebar, tapi ID tetap dipertahankan agar app.js berfungsi -->
             <button id="loadSentimentBtn" class="w-full bg-cyber-cyan text-black py-2 px-3 rounded text-[10px] font-bold font-cyber hover:bg-white transition-colors flex items-center justify-center gap-2 shadow-neon-cyan">
               MUAT ANALISIS KOMENTAR
             </button>
-            <p class="mt-3 text-[10px] text-gray-500 italic">Klik untuk memproses feedback dari komunitas Nexus Cube.</p>
+            <p class="mt-3 text-[10px] text-gray-500 italic">Pilih sumber data untuk diproses AI.</p>
             
             <!-- Status ditambahkan di bawah tombol di sidebar -->
             <div id="sentimentStatus" class="text-[10px] mt-3 font-medium text-center"></div>
@@ -229,42 +239,46 @@
         </section>
 
         <!-- SECTION 3: Sentiment Dashboard (Tampil di main area setelah tombol sidebar diklik) -->
-        <section id="sentimentDashboard" class="hidden flex-col gap-6 mt-4">
+        <section id="sentimentDashboard" class="hidden flex-col gap-8 mt-6">
           <div class="flex items-center gap-4">
             <h2 class="font-cyber text-lg tracking-[0.1em] text-cyber-cyan glow-text-cyan font-bold">ANALISIS SENTIMEN & TEMA</h2>
             <div class="h-[1px] flex-1 bg-cyan-900/30"></div>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-cyber-navy/30 border border-gray-800 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50">
+            <div class="bg-cyber-navy/30 border border-gray-800 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50 flex flex-col justify-center">
               <div class="font-cyber text-3xl font-bold text-white" id="statTotal">-</div>
               <div class="font-sans text-[10px] uppercase tracking-widest text-gray-500 mt-2">Total Komentar</div>
+              <div class="text-[9px] text-gray-500/70 mt-1 italic">Diambil dari dataset</div>
             </div>
-            <div class="bg-cyber-navy/30 border border-emerald-900/50 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50">
+            <div class="bg-cyber-navy/30 border border-emerald-900/50 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50 flex flex-col justify-center">
               <div class="font-cyber text-3xl font-bold text-emerald-400" id="statPositive">-</div>
               <div class="font-sans text-[10px] uppercase tracking-widest text-gray-500 mt-2">Positif</div>
+              <div class="text-[9px] text-emerald-500/70 mt-1 italic">(Apresiasi / Suka)</div>
             </div>
-            <div class="bg-cyber-navy/30 border border-red-900/50 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50">
+            <div class="bg-cyber-navy/30 border border-red-900/50 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50 flex flex-col justify-center">
               <div class="font-cyber text-3xl font-bold text-red-400" id="statNegative">-</div>
               <div class="font-sans text-[10px] uppercase tracking-widest text-gray-500 mt-2">Negatif</div>
+              <div class="text-[9px] text-red-500/70 mt-1 italic">(Keluhan / Masalah)</div>
             </div>
-            <div class="bg-cyber-navy/30 border border-gray-800 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50">
+            <div class="bg-cyber-navy/30 border border-gray-800 rounded-xl p-5 text-center transition-colors hover:bg-cyber-navy/50 flex flex-col justify-center">
               <div class="font-cyber text-3xl font-bold text-gray-400" id="statNeutral">-</div>
               <div class="font-sans text-[10px] uppercase tracking-widest text-gray-500 mt-2">Netral</div>
+              <div class="text-[9px] text-gray-500/70 mt-1 italic">(Pertanyaan / Info)</div>
             </div>
           </div>
 
           <div class="grid md:grid-cols-3 gap-6">
-            <div class="col-span-1 bg-cyber-navy/30 border border-cyan-900/30 rounded-xl p-5">
-              <h3 class="font-cyber text-xs tracking-widest text-cyber-cyan font-bold mb-4">TEMA UTAMA</h3>
-              <div id="themeList" class="space-y-3 font-rajdhani text-sm"></div>
+            <div class="col-span-1 bg-cyber-navy/30 border border-cyan-900/30 rounded-xl p-5 flex flex-col h-[400px]">
+              <h3 class="font-cyber text-xs tracking-widest text-cyber-cyan font-bold mb-4 flex-shrink-0">TEMA UTAMA</h3>
+              <div id="themeList" class="space-y-3 font-rajdhani text-sm overflow-y-auto pr-2 custom-scrollbar"></div>
             </div>
             
-            <div class="col-span-2 bg-cyber-navy/30 border border-cyan-900/30 rounded-xl p-5 overflow-hidden flex flex-col">
-              <h3 class="font-cyber text-xs tracking-widest text-cyber-cyan font-bold mb-4">RINCIAN KOMENTAR</h3>
-              <div class="overflow-y-auto flex-1 max-h-[300px]">
+            <div class="col-span-2 bg-cyber-navy/30 border border-cyan-900/30 rounded-xl p-5 flex flex-col h-[400px]">
+              <h3 class="font-cyber text-xs tracking-widest text-cyber-cyan font-bold mb-4 flex-shrink-0">RINCIAN KOMENTAR</h3>
+              <div class="overflow-y-auto pr-2 custom-scrollbar">
                 <table class="w-full text-left font-rajdhani text-sm">
-                  <thead class="sticky top-0 bg-cyber-dark/90 backdrop-blur text-gray-500 text-[10px] font-sans tracking-widest uppercase border-b border-gray-800">
+                  <thead class="sticky top-0 bg-cyber-dark/95 backdrop-blur text-gray-500 text-[10px] font-sans tracking-widest uppercase border-b border-gray-800">
                     <tr>
                       <th class="py-2 px-3 font-medium">ID</th>
                       <th class="py-2 px-3 font-medium">Sentimen</th>

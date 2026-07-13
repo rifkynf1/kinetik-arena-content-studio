@@ -9,7 +9,7 @@ turnamen esports & gaming fiktif.
 /
 ├── api/
 │   ├── _lib/
-│   │   ├── gemini.js        # Wrapper panggilan Gemini API (@google/genai)
+│   │   ├── gemini.js        # Wrapper panggilan Gemini API (@google/genai) + fallback 3 model
 │   │   └── loadContext.js   # Baca rules.md & file CSV di /data
 │   ├── generate.js          # POST -> generate konten 4 format dari brief
 │   └── sentiment.js         # GET  -> zero-shot sentiment & theme classification
@@ -30,7 +30,7 @@ turnamen esports & gaming fiktif.
 - **Frontend**: HTML + Vanilla JS + Tailwind CSS (via CDN) — tema dark/neon esports (font Orbitron/Rajdhani via Google Fonts).
 - **Backend**: Node.js sebagai Vercel Serverless Functions (folder `/api`).
 - **Parsing CSV**: [`papaparse@^5.5.4`](https://www.npmjs.com/package/papaparse) — dipilih karena bisa parse string secara sinkron (`Papa.parse(text, {header:true})`), lebih simpel di lingkungan serverless dibanding `csv-parser` yang berbasis stream.
-- **Model AI**: Gemini 3.1 Flash Lite lewat **`@google/genai`** — SDK resmi terbaru dari Google (SDK lama `@google/generative-ai` sudah **deprecated** sejak GA `@google/genai` pada Mei 2025).
+- **Model AI**: Gemini lewat **`@google/genai`** — SDK resmi terbaru dari Google (SDK lama `@google/generative-ai` sudah **deprecated** sejak GA `@google/genai` pada Mei 2025). Dipanggil dengan **fallback 3 model berurutan** (`gemini-3.1-flash-lite` → `gemini-2.5-flash-lite` → `gemini-2.5-flash`) — kalau satu model kena limit/overload (HTTP 429/500/503), otomatis lanjut ke model berikutnya (masing-masing punya kuota terpisah). Tidak ada rate-limiting di level aplikasi.
 
 ## Setup Lokal
 

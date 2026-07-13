@@ -2,5 +2,10 @@
   "rewrites": [
     { "source": "/", "destination": "/public/index.html" },
     { "source": "/app.js", "destination": "/public/app.js" }
-  ]
+  ],
+  "functions": {
+    "api/*.js": {
+      "includeFiles": "{rules.md,data/**}"
+    }
+  }
 }

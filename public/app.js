@@ -192,14 +192,23 @@ generateBtn.addEventListener("click", async () => {
   }
 });
 
+// Nama format yang ditampilkan ke user (dipakai supaya pesan lebih spesifik daripada "di kartu ini").
+const formatLabels = {
+  whatsapp: "WhatsApp",
+  discord_telegram: "Discord/Telegram",
+  twitter_thread: "X/Twitter",
+  instagram_caption: "Instagram",
+};
+
 // ---- Approval buttons ----
 document.querySelectorAll(".approve-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.dataset.locked === "true") {
+      const formatName = formatLabels[btn.dataset.approve] || "ini";
       showAlert({
         icon: "warning",
         title: "Belum Direview",
-        text: "Klik \"EVALUASI (AI JUDGE)\" dulu, lalu centang \"Human spot-check\" di kartu ini sebelum bisa disetujui. Ini memastikan tidak ada konten yang di-approve tanpa direview manusia.",
+        text: `Klik "EVALUASI (AI JUDGE)" dulu, lalu centang "Human spot-check" untuk konten ${formatName} ini sebelum bisa disetujui. Ini memastikan tidak ada konten yang di-approve tanpa direview manusia.`,
       });
       return;
     }
@@ -240,10 +249,11 @@ document.querySelectorAll("[data-spotcheck]").forEach((checkbox) => {
 document.querySelectorAll(".copy-btn").forEach((btn) => {
   btn.addEventListener("click", async () => {
     if (btn.dataset.locked === "true") {
+      const formatName = formatLabels[btn.dataset.requiresSpotcheck] || "ini";
       showAlert({
         icon: "warning",
         title: "Belum Direview",
-        text: "Klik \"EVALUASI (AI JUDGE)\" dulu, lalu centang \"Human spot-check\" di kartu ini sebelum bisa menyalin konten. Ini mencegah konten yang belum direview ikut ter-copy ke luar.",
+        text: `Klik "EVALUASI (AI JUDGE)" dulu, lalu centang "Human spot-check" untuk konten ${formatName} ini sebelum bisa disalin. Ini mencegah konten yang belum direview ikut ter-copy ke luar.`,
       });
       return;
     }

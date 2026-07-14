@@ -5,6 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Nexus Cube // Content Studio</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <script>
     tailwind.config = {
@@ -188,8 +189,8 @@
                 <textarea id="editWhatsapp" rows="8" class="w-full bg-black/40 border border-emerald-900/50 rounded-lg p-4 text-gray-300 font-rajdhani text-sm focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none shadow-inner transition-colors"></textarea>
                 <p data-schedule="whatsapp" class="text-sm text-amber-300/90 font-rajdhani font-medium"></p>
                 <div class="flex gap-2">
-                  <button data-approve="whatsapp" class="approve-btn flex-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-emerald-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
-                  <button data-copy="editWhatsapp" class="copy-btn flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
+                  <button data-approve="whatsapp" title="Centang human spot-check dulu sebelum menyetujui" class="approve-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-emerald-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
+                  <button data-copy="editWhatsapp" data-requires-spotcheck="whatsapp" title="Centang human spot-check dulu sebelum menyalin" class="copy-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
                   <button data-evaluate="whatsapp" class="evaluate-btn flex-1 bg-transparent text-amber-400 border border-amber-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-amber-500/10 active:scale-95 transition-all">EVALUASI (AI JUDGE)</button>
                 </div>
                 <div data-eval-panel="whatsapp" class="hidden rounded-lg border border-amber-500/30 bg-black/30 p-3 space-y-2 text-xs">
@@ -199,9 +200,12 @@
                     <span data-eval-verdict="whatsapp"></span>
                   </div>
                   <p class="text-gray-400 italic" data-eval-summary="whatsapp"></p>
-                  <label class="flex items-start gap-2 pt-2 border-t border-amber-900/30">
-                    <input type="checkbox" data-spotcheck="whatsapp" class="mt-0.5" />
-                    <span class="text-gray-400">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
+                  <label class="flex items-start gap-3 pt-2 border-t border-amber-900/30 cursor-pointer select-none">
+                    <input type="checkbox" data-spotcheck="whatsapp" class="peer sr-only" />
+                    <span class="relative mt-0.5 flex-shrink-0 w-5 h-5 rounded-md border-2 border-gray-600 hover:border-gray-400 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/20 peer-checked:[&>svg]:opacity-100 transition-colors">
+                      <svg class="absolute inset-0 m-auto w-3 h-3 text-emerald-400 opacity-0 transition-opacity" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    </span>
+                    <span class="text-gray-400 peer-checked:text-gray-200 transition-colors">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
                   </label>
                   <span data-spotcheck-feedback="whatsapp" class="text-[11px] text-emerald-400/80 italic"></span>
                 </div>
@@ -222,8 +226,8 @@
                 <textarea id="editDiscord" rows="8" class="w-full bg-black/40 border border-indigo-900/50 rounded-lg p-4 text-gray-300 font-rajdhani text-sm focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none shadow-inner transition-colors"></textarea>
                 <p data-schedule="discord_telegram" class="text-sm text-amber-300/90 font-rajdhani font-medium"></p>
                 <div class="flex gap-2">
-                  <button data-approve="discord_telegram" class="approve-btn flex-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-indigo-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
-                  <button data-copy="editDiscord" class="copy-btn flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
+                  <button data-approve="discord_telegram" title="Centang human spot-check dulu sebelum menyetujui" class="approve-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-indigo-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
+                  <button data-copy="editDiscord" data-requires-spotcheck="discord_telegram" title="Centang human spot-check dulu sebelum menyalin" class="copy-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
                   <button data-evaluate="discord_telegram" class="evaluate-btn flex-1 bg-transparent text-amber-400 border border-amber-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-amber-500/10 active:scale-95 transition-all">EVALUASI (AI JUDGE)</button>
                 </div>
                 <div data-eval-panel="discord_telegram" class="hidden rounded-lg border border-amber-500/30 bg-black/30 p-3 space-y-2 text-xs">
@@ -233,9 +237,12 @@
                     <span data-eval-verdict="discord_telegram"></span>
                   </div>
                   <p class="text-gray-400 italic" data-eval-summary="discord_telegram"></p>
-                  <label class="flex items-start gap-2 pt-2 border-t border-amber-900/30">
-                    <input type="checkbox" data-spotcheck="discord_telegram" class="mt-0.5" />
-                    <span class="text-gray-400">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
+                  <label class="flex items-start gap-3 pt-2 border-t border-amber-900/30 cursor-pointer select-none">
+                    <input type="checkbox" data-spotcheck="discord_telegram" class="peer sr-only" />
+                    <span class="relative mt-0.5 flex-shrink-0 w-5 h-5 rounded-md border-2 border-gray-600 hover:border-gray-400 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/20 peer-checked:[&>svg]:opacity-100 transition-colors">
+                      <svg class="absolute inset-0 m-auto w-3 h-3 text-emerald-400 opacity-0 transition-opacity" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    </span>
+                    <span class="text-gray-400 peer-checked:text-gray-200 transition-colors">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
                   </label>
                   <span data-spotcheck-feedback="discord_telegram" class="text-[11px] text-emerald-400/80 italic"></span>
                 </div>
@@ -255,8 +262,8 @@
                 <textarea id="editTwitter" rows="8" class="w-full bg-black/40 border border-cyan-900/50 rounded-lg p-4 text-gray-300 font-rajdhani text-sm focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 outline-none resize-none shadow-inner transition-colors" placeholder="Tiap tweet dipisah baris kosong."></textarea>
                 <p data-schedule="twitter_thread" class="text-sm text-amber-300/90 font-rajdhani font-medium"></p>
                 <div class="flex gap-2">
-                  <button data-approve="twitter_thread" class="approve-btn flex-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-cyan-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
-                  <button data-copy="editTwitter" class="copy-btn flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
+                  <button data-approve="twitter_thread" title="Centang human spot-check dulu sebelum menyetujui" class="approve-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-cyan-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
+                  <button data-copy="editTwitter" data-requires-spotcheck="twitter_thread" title="Centang human spot-check dulu sebelum menyalin" class="copy-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
                   <button data-evaluate="twitter_thread" class="evaluate-btn flex-1 bg-transparent text-amber-400 border border-amber-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-amber-500/10 active:scale-95 transition-all">EVALUASI (AI JUDGE)</button>
                 </div>
                 <div data-eval-panel="twitter_thread" class="hidden rounded-lg border border-amber-500/30 bg-black/30 p-3 space-y-2 text-xs">
@@ -266,9 +273,12 @@
                     <span data-eval-verdict="twitter_thread"></span>
                   </div>
                   <p class="text-gray-400 italic" data-eval-summary="twitter_thread"></p>
-                  <label class="flex items-start gap-2 pt-2 border-t border-amber-900/30">
-                    <input type="checkbox" data-spotcheck="twitter_thread" class="mt-0.5" />
-                    <span class="text-gray-400">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
+                  <label class="flex items-start gap-3 pt-2 border-t border-amber-900/30 cursor-pointer select-none">
+                    <input type="checkbox" data-spotcheck="twitter_thread" class="peer sr-only" />
+                    <span class="relative mt-0.5 flex-shrink-0 w-5 h-5 rounded-md border-2 border-gray-600 hover:border-gray-400 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/20 peer-checked:[&>svg]:opacity-100 transition-colors">
+                      <svg class="absolute inset-0 m-auto w-3 h-3 text-emerald-400 opacity-0 transition-opacity" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    </span>
+                    <span class="text-gray-400 peer-checked:text-gray-200 transition-colors">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
                   </label>
                   <span data-spotcheck-feedback="twitter_thread" class="text-[11px] text-emerald-400/80 italic"></span>
                 </div>
@@ -288,8 +298,8 @@
                 <textarea id="editInstagram" rows="8" class="w-full bg-black/40 border border-fuchsia-900/50 rounded-lg p-4 text-gray-300 font-rajdhani text-sm focus:ring-1 focus:ring-cyber-fuchsia focus:border-cyber-fuchsia outline-none resize-none shadow-inner transition-colors"></textarea>
                 <p data-schedule="instagram_caption" class="text-sm text-amber-300/90 font-rajdhani font-medium"></p>
                 <div class="flex gap-2">
-                  <button data-approve="instagram_caption" class="approve-btn flex-1 bg-fuchsia-500/10 text-cyber-fuchsia border border-fuchsia-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-fuchsia-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
-                  <button data-copy="editInstagram" class="copy-btn flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
+                  <button data-approve="instagram_caption" title="Centang human spot-check dulu sebelum menyetujui" class="approve-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-fuchsia-500/10 text-cyber-fuchsia border border-fuchsia-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-fuchsia-500/20 active:scale-95 transition-all">✅ SETUJUI</button>
+                  <button data-copy="editInstagram" data-requires-spotcheck="instagram_caption" title="Centang human spot-check dulu sebelum menyalin" class="copy-btn locked-btn opacity-40 cursor-not-allowed flex-1 bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:text-white active:scale-95 transition-all">COPY</button>
                   <button data-evaluate="instagram_caption" class="evaluate-btn flex-1 bg-transparent text-amber-400 border border-amber-500/30 rounded py-2 text-xs font-bold font-cyber tracking-wider hover:bg-amber-500/10 active:scale-95 transition-all">EVALUASI (AI JUDGE)</button>
                 </div>
                 <div data-eval-panel="instagram_caption" class="hidden rounded-lg border border-amber-500/30 bg-black/30 p-3 space-y-2 text-xs">
@@ -299,9 +309,12 @@
                     <span data-eval-verdict="instagram_caption"></span>
                   </div>
                   <p class="text-gray-400 italic" data-eval-summary="instagram_caption"></p>
-                  <label class="flex items-start gap-2 pt-2 border-t border-amber-900/30">
-                    <input type="checkbox" data-spotcheck="instagram_caption" class="mt-0.5" />
-                    <span class="text-gray-400">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
+                  <label class="flex items-start gap-3 pt-2 border-t border-amber-900/30 cursor-pointer select-none">
+                    <input type="checkbox" data-spotcheck="instagram_caption" class="peer sr-only" />
+                    <span class="relative mt-0.5 flex-shrink-0 w-5 h-5 rounded-md border-2 border-gray-600 hover:border-gray-400 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/20 peer-checked:[&>svg]:opacity-100 transition-colors">
+                      <svg class="absolute inset-0 m-auto w-3 h-3 text-emerald-400 opacity-0 transition-opacity" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    </span>
+                    <span class="text-gray-400 peer-checked:text-gray-200 transition-colors">Human spot-check: saya sudah cek manual & setuju dengan penilaian AI di atas.</span>
                   </label>
                   <span data-spotcheck-feedback="instagram_caption" class="text-[11px] text-emerald-400/80 italic"></span>
                 </div>

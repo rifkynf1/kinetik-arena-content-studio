@@ -28,10 +28,63 @@ function setBusy(button, busy, busyLabel, idleLabel) {
   button.textContent = busy ? busyLabel : idleLabel;
 }
 
+// Escape teks sebelum disisipkan ke innerHTML (aman untuk posisi teks maupun di dalam
+// atribut HTML) - wajib dipakai untuk teks dari AI atau dari CSV yang bisa di-upload
+// user sendiri, supaya tidak ada celah XSS (mis. komentar CSV berisi
+// "<img src=x onerror=...>" atau "\" onmouseover=..." ikut dieksekusi sebagai HTML).
+function escapeHtml(str) {
+  return String(str === null || str === undefined ? "" : str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Alert bertema gelap senada UI, dipakai buat ganti alert() bawaan browser supaya
+// pesannya lebih informatif (judul + penjelasan + saran aksi), bukan cuma teks datar.
+function showAlert({ icon = "info", title, text, confirmText = "Oke, Mengerti" }) {
+  if (typeof Swal === "undefined") {
+    window.alert(`${title ? title + "\n" : ""}${text || ""}`);
+    return;
+  }
+  Swal.fire({
+    icon,
+    title,
+    text,
+    confirmButtonText: confirmText,
+    background: "#0a111e",
+    color: "#e2e8f0",
+    confirmButtonColor: "#00f0ff",
+    customClass: { popup: "font-rajdhani", confirmButton: "font-cyber" },
+  });
+}
+
+// Toggle tampilan "terkunci" (redup, cursor not-allowed) tanpa pakai atribut `disabled`
+// bawaan HTML - sengaja begitu supaya tombol TETAP bisa diklik untuk memicu pesan
+// informatif ("kenapa ini belum bisa dipakai"), bukan cuma diam tidak merespon.
+function setBtnLocked(btn, locked) {
+  if (!btn) return;
+  btn.dataset.locked = locked ? "true" : "false";
+  btn.classList.toggle("opacity-40", locked);
+  btn.classList.toggle("cursor-not-allowed", locked);
+}
+
 function clearApprovalStatuses() {
   document.querySelectorAll("[data-status]").forEach((el) => (el.textContent = ""));
   Object.keys(approved).forEach((k) => (approved[k] = null));
+  document.querySelectorAll("[data-spotcheck]").forEach((cb) => {
+    cb.checked = false;
+    const key = cb.dataset.spotcheck;
+    setBtnLocked(document.querySelector(`[data-approve="${key}"]`), true);
+    setBtnLocked(document.querySelector(`[data-requires-spotcheck="${key}"]`), true);
+    const feedbackEl = document.querySelector(`[data-spotcheck-feedback="${key}"]`);
+    if (feedbackEl) feedbackEl.textContent = "";
+  });
 }
+
+// Kunci semua tombol Setujui & Copy sejak awal load (sebelum ada evaluasi/spot-check).
+document.querySelectorAll(".approve-btn, [data-requires-spotcheck]").forEach((btn) => setBtnLocked(btn, true));
 
 // Thread disimpan di textarea sebagai teks, tiap tweet dipisah baris kosong ("\n\n")
 function threadArrayToText(arr) {
@@ -59,15 +112,16 @@ function scanPlaceholders() {
   }
 
   placeholderInputs.innerHTML = [...found]
-    .map(
-      (name) => `
+    .map((name) => {
+      const safeName = escapeHtml(name);
+      return `
     <label class="flex flex-col gap-1 text-xs text-gray-400">
-      <span>[${name}]</span>
-      <input type="text" data-placeholder-input="${name}" placeholder="Isi nilai asli untuk ${name}..."
+      <span>[${safeName}]</span>
+      <input type="text" data-placeholder-input="${safeName}" placeholder="Isi nilai asli untuk ${safeName}..."
         class="bg-black/40 border border-zinc-700 rounded p-2 text-gray-200 text-sm focus:ring-1 focus:ring-amber-500 focus:border-amber-500 outline-none" />
     </label>
-  `
-    )
+  `;
+    })
     .join("");
   placeholderPanel.classList.remove("hidden");
 }
@@ -141,6 +195,15 @@ generateBtn.addEventListener("click", async () => {
 // ---- Approval buttons ----
 document.querySelectorAll(".approve-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
+    if (btn.dataset.locked === "true") {
+      showAlert({
+        icon: "warning",
+        title: "Belum Direview",
+        text: "Klik \"EVALUASI (AI JUDGE)\" dulu, lalu centang \"Human spot-check\" di kartu ini sebelum bisa disetujui. Ini memastikan tidak ada konten yang di-approve tanpa direview manusia.",
+      });
+      return;
+    }
+
     const key = btn.dataset.approve;
     const statusEl = document.querySelector(`[data-status="${key}"]`);
 
@@ -154,21 +217,37 @@ document.querySelectorAll(".approve-btn").forEach((btn) => {
   });
 });
 
-// ---- Human Spot-Check feedback (bukan submit ke server - cuma state lokal browser,
-// ikut tersimpan ke file .txt begitu tombol Export diklik) ----
+// ---- Human Spot-Check: gerbang wajib sebelum tombol Setujui & Copy bisa dipakai ----
+// (bukan submit ke server - cuma state lokal browser, ikut tersimpan ke file .txt
+// begitu tombol Export diklik). Sengaja nonaktif sampai reviewer benar-benar
+// mencentang kotak ini, supaya tidak asal approve/copy tanpa direview.
 document.querySelectorAll("[data-spotcheck]").forEach((checkbox) => {
   const key = checkbox.dataset.spotcheck;
   const feedbackEl = document.querySelector(`[data-spotcheck-feedback="${key}"]`);
+  const approveBtn = document.querySelector(`[data-approve="${key}"]`);
+  const copyBtn = document.querySelector(`[data-requires-spotcheck="${key}"]`);
 
   checkbox.addEventListener("change", () => {
-    if (!feedbackEl) return;
-    feedbackEl.textContent = checkbox.checked ? "Tersimpan - akan ikut masuk saat kamu klik Export di bawah." : "";
+    if (feedbackEl) {
+      feedbackEl.textContent = checkbox.checked ? "Tersimpan - akan ikut masuk saat kamu klik Export di bawah." : "";
+    }
+    setBtnLocked(approveBtn, !checkbox.checked);
+    setBtnLocked(copyBtn, !checkbox.checked);
   });
 });
 
 // ---- Copy buttons ----
 document.querySelectorAll(".copy-btn").forEach((btn) => {
   btn.addEventListener("click", async () => {
+    if (btn.dataset.locked === "true") {
+      showAlert({
+        icon: "warning",
+        title: "Belum Direview",
+        text: "Klik \"EVALUASI (AI JUDGE)\" dulu, lalu centang \"Human spot-check\" di kartu ini sebelum bisa menyalin konten. Ini mencegah konten yang belum direview ikut ter-copy ke luar.",
+      });
+      return;
+    }
+
     const targetId = btn.dataset.copy;
     const value = document.getElementById(targetId).value;
     try {
@@ -177,7 +256,11 @@ document.querySelectorAll(".copy-btn").forEach((btn) => {
       btn.textContent = "DISALIN!";
       setTimeout(() => (btn.textContent = original), 1200);
     } catch {
-      alert("Gagal menyalin ke clipboard.");
+      showAlert({
+        icon: "error",
+        title: "Gagal Menyalin",
+        text: "Browser menolak akses clipboard (biasanya karena izin belum diberikan atau halaman tidak dibuka lewat HTTPS/localhost). Coba salin manual dengan menyorot teks di kotak konten lalu Ctrl+C.",
+      });
     }
   });
 });
@@ -202,7 +285,11 @@ document.querySelectorAll(".evaluate-btn").forEach((btn) => {
 
     const content = key === "twitter_thread" ? threadTextToArray(textarea.value) : textarea.value;
     if (!content || (Array.isArray(content) && !content.length)) {
-      alert("Isi/generate kontennya dulu sebelum dievaluasi.");
+      showAlert({
+        icon: "warning",
+        title: "Konten Masih Kosong",
+        text: "Belum ada teks di kartu ini untuk dievaluasi. Klik \"GENERATE KONTEN\" dulu di bagian atas, atau isi manual dulu sebelum menekan Evaluasi.",
+      });
       return;
     }
 
@@ -225,10 +312,10 @@ document.querySelectorAll(".evaluate-btn").forEach((btn) => {
         .map(
           (c) => `
         <div class="flex items-start justify-between gap-3">
-          <span class="text-gray-300">${c.label || c.key}</span>
-          <span class="text-amber-300 font-bold whitespace-nowrap">${c.score}/5</span>
+          <span class="text-gray-300">${escapeHtml(c.label || c.key)}</span>
+          <span class="text-amber-300 font-bold whitespace-nowrap">${escapeHtml(c.score)}/5</span>
         </div>
-        <p class="text-gray-500 text-[11px] -mt-1">${c.comment || ""}</p>
+        <p class="text-gray-500 text-[11px] -mt-1">${escapeHtml(c.comment || "")}</p>
       `
         )
         .join("");
@@ -241,7 +328,11 @@ document.querySelectorAll(".evaluate-btn").forEach((btn) => {
 
       panel.classList.remove("hidden");
     } catch (err) {
-      alert(`Error evaluasi: ${err.message}`);
+      showAlert({
+        icon: "error",
+        title: "Evaluasi Gagal",
+        text: `${err.message}. Coba klik "EVALUASI (AI JUDGE)" lagi - kalau masih gagal, kemungkinan API key Gemini belum diset atau sedang kena limit.`,
+      });
     } finally {
       btn.disabled = false;
       btn.textContent = original;
@@ -266,7 +357,11 @@ exportBtn.addEventListener("click", () => {
   if (approved.instagram_caption) parts.push(`=== CAPTION INSTAGRAM ===\n${approved.instagram_caption}${spotCheckNote("instagram_caption")}`);
 
   if (!parts.length) {
-    alert("Belum ada konten yang disetujui. Klik 'Setujui' pada minimal satu format dulu.");
+    showAlert({
+      icon: "info",
+      title: "Belum Ada yang Disetujui",
+      text: "Export cuma mengambil konten yang sudah di-klik \"Setujui\". Review dulu minimal 1 format (evaluasi + centang human spot-check), baru klik Setujui pada kartunya, lalu coba Export lagi.",
+    });
     return;
   }
 
@@ -335,12 +430,12 @@ loadSentimentBtn.addEventListener("click", async () => {
       const tr = document.createElement("tr");
       if (w.is_spike) tr.className = "bg-red-500/10";
       tr.innerHTML = `
-        <td class="p-2 text-slate-300">${w.week_start} – ${w.week_end}</td>
-        <td class="p-2 text-slate-400">${w.total}</td>
-        <td class="p-2 text-emerald-400">${w.positive}</td>
-        <td class="p-2 text-rose-400">${w.negative}</td>
-        <td class="p-2 text-slate-400">${w.neutral}</td>
-        <td class="p-2 text-slate-300">${Math.round(w.negative_ratio * 100)}%</td>
+        <td class="p-2 text-slate-300">${escapeHtml(w.week_start)} s.d. ${escapeHtml(w.week_end)}</td>
+        <td class="p-2 text-slate-400">${Number(w.total) || 0}</td>
+        <td class="p-2 text-emerald-400">${Number(w.positive) || 0}</td>
+        <td class="p-2 text-rose-400">${Number(w.negative) || 0}</td>
+        <td class="p-2 text-slate-400">${Number(w.neutral) || 0}</td>
+        <td class="p-2 text-slate-300">${Math.round((Number(w.negative_ratio) || 0) * 100)}%</td>
         <td class="p-2">${w.is_spike ? '<span class="text-rose-400 font-bold">⚠ SPIKE</span>' : '<span class="text-slate-500">normal</span>'}</td>
       `;
       weeklyBody.appendChild(tr);
@@ -362,8 +457,8 @@ loadSentimentBtn.addEventListener("click", async () => {
       const row = document.createElement("div");
       row.className = "flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-sm";
       row.innerHTML = `
-        <span class="text-slate-200">${t.theme}</span>
-        <span class="text-slate-400 text-xs">${t.count}x · <span class="capitalize">${t.sentiment_lean}</span></span>
+        <span class="text-slate-200">${escapeHtml(t.theme)}</span>
+        <span class="text-slate-400 text-xs">${Number(t.count) || 0}x &middot; <span class="capitalize">${escapeHtml(t.sentiment_lean)}</span></span>
       `;
       themeList.appendChild(row);
     });
@@ -375,10 +470,10 @@ loadSentimentBtn.addEventListener("click", async () => {
       const sentimentColor =
         item.sentiment === "positive" ? "text-emerald-400" : item.sentiment === "negative" ? "text-rose-400" : "text-slate-400";
       tr.innerHTML = `
-        <td class="p-2 text-slate-400">#${item.id}</td>
-        <td class="p-2 font-medium ${sentimentColor} capitalize">${item.sentiment}</td>
-        <td class="p-2 text-slate-300 truncate max-w-[120px]" title="${item.theme}">${item.theme}</td>
-        <td class="p-2 text-slate-400 text-xs pr-4">${item.text || ''}</td>
+        <td class="p-2 text-slate-400">#${escapeHtml(item.id)}</td>
+        <td class="p-2 font-medium ${sentimentColor} capitalize">${escapeHtml(item.sentiment)}</td>
+        <td class="p-2 text-slate-300 truncate max-w-[120px]" title="${escapeHtml(item.theme)}">${escapeHtml(item.theme)}</td>
+        <td class="p-2 text-slate-400 text-xs pr-4">${escapeHtml(item.text || "")}</td>
       `;
       tbody.appendChild(tr);
     });

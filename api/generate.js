@@ -150,6 +150,22 @@ baik-baik, ini sering dilanggar):
 - Untuk twitter_thread, tiap elemen array adalah 1 tweet - jangan gabungkan beberapa tweet
   jadi 1 elemen string panjang.
 
+ATURAN ANTI-REPETISI ANTAR FORMAT (penting, sering dilanggar): keempat format JANGAN cuma
+saling tempel-ulang info yang sama dengan kalimat pembuka beda tipis - itu bikin hasilnya
+kerasa seperti 1 template yang di-copy 4 kali. Bedakan STRUKTURNYA, bukan cuma kata-katanya:
+- whatsapp: boleh pakai daftar poin emoji (Format/Prize Pool/dll) karena broadcast memang
+  butuh detail lengkap yang gampang dipindai.
+- discord_telegram: JANGAN sekadar copy daftar poin yang sama dari WhatsApp. Tulis lebih
+  naratif/informatif ala pengumuman komunitas resmi - boleh tetap ada **bold** untuk info
+  krusial, tapi rangkai dalam kalimat, bukan daftar bullet emoji yang identik dengan WhatsApp.
+- twitter_thread: HARUS terasa native platform X - tweet pendek, punchy, tidak sekadar
+  memecah paragraf WhatsApp jadi potongan-potongan. Fokus ke 1-2 info paling penting saja per
+  thread, jangan coba masukkan semua detail seperti di WhatsApp/Discord.
+- instagram_caption: HARUS storytelling/naratif visual, BUKAN daftar poin emoji lagi. Bayangkan
+  ini teks pendamping foto/poster - alurnya cerita singkat, bukan rangkuman fakta berbaris.
+- Kalau brief-nya minim info (banyak placeholder), variasikan cara PENYAMPAIAN placeholder itu
+  antar format juga - jangan keempatnya menampilkan daftar placeholder yang identik persis.
+
 Tanggal acuan hari ini (server, WIB): ${todayDate} (${todayDayName}). Semua tanggal yang kamu
 sarankan WAJIB berada di masa depan relatif ke tanggal acuan ini.
 

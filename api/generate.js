@@ -18,6 +18,14 @@ const SCHEDULE_ITEM_SCHEMA = {
 const RESPONSE_SCHEMA = {
   type: 'object',
   properties: {
+    is_on_topic: {
+      type: 'boolean',
+      description: 'true kalau brief ini benar-benar tentang promosi event/turnamen esports Nexus Cube, false kalau brief-nya di luar konteks itu sama sekali (mis. resep masakan, curhat pribadi, pertanyaan umum yang tidak berhubungan dengan event/promosi esports).',
+    },
+    off_topic_reason: {
+      type: 'string',
+      description: 'Kalau is_on_topic false, jelaskan singkat (1 kalimat) kenapa brief ini dianggap di luar konteks. Kalau is_on_topic true, isi string kosong.',
+    },
     whatsapp: { type: 'string' },
     discord_telegram: { type: 'string' },
     twitter_thread: {
@@ -38,7 +46,7 @@ const RESPONSE_SCHEMA = {
       required: ['whatsapp', 'discord_telegram', 'twitter_thread', 'instagram_caption'],
     },
   },
-  required: ['whatsapp', 'discord_telegram', 'twitter_thread', 'instagram_caption', 'calendar_suggestion'],
+  required: ['is_on_topic', 'off_topic_reason', 'whatsapp', 'discord_telegram', 'twitter_thread', 'instagram_caption', 'calendar_suggestion'],
 };
 
 function buildFewShotBlock(samplePosts) {
@@ -97,11 +105,39 @@ ${fewShotBlock}
 Brief/instruksi konten baru dari panitia:
 "${brief.trim()}"
 
-Tugasmu: buat konten promosi turnamen berdasarkan brief di atas dalam 4 format sekaligus:
+LANGKAH PERTAMA - CEK KONTEKS: sebelum menulis apa pun, tentukan is_on_topic. Set ke false
+HANYA kalau brief ini jelas SAMA SEKALI tidak berhubungan dengan promosi event/turnamen
+esports Nexus Cube (misal: resep masakan, curhat pribadi, pertanyaan matematika, tugas
+sekolah, atau topik lain yang tidak ada kaitannya dengan event/gaming/esports). Kalau masih
+ada kemungkinan itu tentang event Nexus Cube walau infonya minim, anggap is_on_topic true -
+jangan terlalu sensitif menolak. Kalau is_on_topic false, isi off_topic_reason singkat dan
+untuk field whatsapp/discord_telegram/twitter_thread/instagram_caption cukup isi string
+kosong ("" atau array kosong) - tidak perlu menulis konten promosi sama sekali.
+
+Kalau is_on_topic true, lanjutkan tugas berikut - buat konten promosi turnamen berdasarkan
+brief di atas dalam 4 format sekaligus:
 1. Broadcast WhatsApp / Grup WA (detail lengkap)
 2. Pengumuman Discord/Telegram (nada official komunitas)
 3. Utas (thread) X/Twitter — array beberapa tweet berurutan, tweet pertama sebagai hook
 4. Caption Instagram (naratif & visual)
+
+ATURAN ANTI-MENGARANG (PALING PENTING, sering dilanggar - baca sampai habis):
+- Kalau brief TIDAK menyebutkan suatu info (harga tiket, prize pool, tanggal, format match,
+  venue, link, dll), kamu WAJIB isi bagian itu dengan placeholder eksplisit seperti
+  [HARGA TIKET], [PRIZE POOL], [TANGGAL], [FORMAT MATCH], [NAMA VENUE], [LINK DAFTAR] -
+  JANGAN PERNAH mengisi dengan angka/tanggal/nama karangan sendiri yang terdengar masuk akal,
+  walau kelihatannya "membantu". Ini pelanggaran serius, sama seperti berbohong ke pembaca.
+- Contoh kesalahan nyata yang HARUS DIHINDARI: brief cuma "Buat promo War Tiket Nexus Cup
+  Mobile Legends Season 5." (tanpa detail apa pun) tapi hasilnya malah mengarang
+  "Registrasi: 18-25 Juli 2026", "Match Day: 30 Juli - 2 Agustus 2026", "Prize Pool:
+  Rp20.000.000", "Format: 5v5 Single Elimination", "Biaya Daftar: Rp150.000/tim" -
+  SEMUA angka itu tidak ada di brief, jadi SEMUA itu salah dan harus jadi placeholder.
+- Sebaliknya: info yang MEMANG disebutkan di brief (misal brief bilang "prize pool
+  Rp20.000.000") WAJIB ditulis apa adanya, jangan diubah jadi placeholder juga.
+- Aturan yang sama berlaku untuk field date/time di calendar_suggestion: kalau kamu perlu
+  tanggal event (match day/registrasi) untuk bernalar soal jadwal upload tapi brief tidak
+  menyebutkannya, jangan mengarang tanggal event - cukup pilih jadwal upload yang masuk akal
+  berdasarkan info yang memang tersedia.
 
 ATURAN FORMATTING WAJIB untuk whatsapp, discord_telegram, dan instagram_caption (perhatikan
 baik-baik, ini sering dilanggar):
@@ -145,6 +181,32 @@ Balas HANYA dalam format JSON sesuai schema yang diberikan.`;
       responseSchema: RESPONSE_SCHEMA,
       temperature: 0.9,
     });
+
+    // Brief di luar konteks Nexus Cube (mis. resep masakan, curhat, dll) - tolak di sini,
+    // jangan lanjut proses/tampilkan 4 format kosong yang tidak berguna ke user.
+    if (result && result.is_on_topic === false) {
+      res.status(400).json({
+        ok: false,
+        error: `Brief ini sepertinya di luar konteks promosi event Nexus Cube${
+          result.off_topic_reason ? `: ${result.off_topic_reason}` : '.'
+        } Coba tulis brief yang berhubungan dengan turnamen/event esports.`,
+      });
+      return;
+    }
+
+    // Hitung ulang nama hari dari tanggal (bukan percaya mentah-mentah ke AI) supaya
+    // tidak ada kasus AI salah sebut hari - misal bilang tanggalnya Rabu padahal
+    // tanggal itu sebenarnya jatuh di hari Kamis.
+    if (result && result.calendar_suggestion) {
+      for (const key of Object.keys(result.calendar_suggestion)) {
+        const item = result.calendar_suggestion[key];
+        if (!item || !item.date) continue;
+        const parsed = new Date(`${item.date}T00:00:00`);
+        if (!Number.isNaN(parsed.getTime())) {
+          item.day = parsed.toLocaleDateString('id-ID', { weekday: 'long', timeZone: 'Asia/Jakarta' });
+        }
+      }
+    }
 
     res.status(200).json({ ok: true, data: result });
   } catch (err) {

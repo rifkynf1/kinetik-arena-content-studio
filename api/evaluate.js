@@ -58,6 +58,14 @@ function contentToText(content) {
   return String(content || "");
 }
 
+// Cek deterministik (bukan dinilai AI) apakah konten masih punya placeholder kosong
+// seperti [HARGA TIKET] atau [TANGGAL]. Kalau ada, konten belum siap posting - ini fakta
+// yang bisa dipastikan lewat kode, tidak perlu (dan tidak boleh) dipercayakan ke AI judge.
+function findUnfilledPlaceholders(text) {
+  const matches = text.match(/\[([^\[\]]+)\]/g) || [];
+  return [...new Set(matches)];
+}
+
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed. Gunakan POST." });
@@ -120,6 +128,16 @@ harus persis salah satu dari: ${RUBRIC_CRITERIA.map((c) => `"${c.key}"`).join(",
       const avg = result.criteria.reduce((sum, c) => sum + Number(c.score || 0), 0) / result.criteria.length;
       result.overall_score = Math.round(avg * 10) / 10;
       result.verdict = result.overall_score >= 3.5 ? "approved" : "needs_revision";
+
+      // Placeholder kosong = belum siap posting, TERLEPAS dari bagus tidaknya skor brand-fit.
+      // Ini paksa di kode (bukan minta AI menilai kelengkapan info), supaya tidak ada kasus
+      // konten dengan banyak [XXXX] tetap lolos "approved" cuma karena nadanya sudah pas.
+      const unfilled = findUnfilledPlaceholders(contentText);
+      if (unfilled.length) {
+        result.verdict = "needs_revision";
+        result.unfilled_placeholders = unfilled;
+        result.summary = `${result.summary || ""} Catatan tambahan: konten ini masih punya ${unfilled.length} placeholder kosong (${unfilled.join(", ")}) yang wajib diisi sebelum posting - verdict otomatis diturunkan ke "needs_revision" terlepas dari skor brand-fit-nya.`.trim();
+      }
     }
 
     res.status(200).json({ ok: true, data: result });

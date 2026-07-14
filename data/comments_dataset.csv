@@ -1,21 +1,361 @@
 post_id,comment_text,channel,timestamp,likes,shares,brand_mentioned,follower_count
-P-0001,"War tiket kemarin lancar banget, langsung dapet slot buat squad gw. GG admin!",discord,2026-06-01T10:15:00Z,12,1,true,850
-P-0002,"Bracket-nya jelas dan gampang dipahami, rules juga fair buat semua tim.",discord,2026-06-02T14:20:00Z,8,0,true,420
-P-0003,"Prize pool nya gede banget taun ini, makin semangat push rank buat kualifikasi.",instagram,2026-06-03T09:05:00Z,45,6,true,2100
-P-0004,"Admin fast response pas ada masalah pendaftaran, salut deh pelayanannya.",discord,2026-06-04T18:40:00Z,15,1,true,850
-P-0005,"Match day kemarin seru banget, panitia on point ngatur jadwalnya.",discord,2026-06-05T20:10:00Z,22,3,true,850
-P-0006,"Venue-nya keren, setup panggung sama lighting-nya bikin suasana makin hype.",instagram,2026-06-06T11:30:00Z,60,10,true,2100
-P-0007,"Info jadwal sering telat di-update, jadi banyak yang bingung match kapan mulai.",telegram,2026-06-07T08:00:00Z,5,0,true,310
-P-0008,"Mohon info dong kalau ada turnamen Free Fire selanjutnya, pengen ikut lagi.",telegram,2026-06-08T13:15:00Z,3,0,true,310
-P-0009,"Server match kemarin lag parah pas grand final, bikin momen penting jadi kacau.",twitter,2026-06-13T21:00:00Z,88,25,true,5400
-P-0010,"Streaming-nya putus-putus terus pas partai final, kecewa banget nontonnya.",twitter,2026-06-13T21:10:00Z,64,18,true,5400
-P-0011,"Ada bug di sistem skor pas fase grup, untung admin cepat benerin.",discord,2026-06-14T09:45:00Z,10,1,true,850
-P-0012,"Tiket nonton offline war-nya susah banget, keburu abis dalam hitungan menit.",twitter,2026-06-14T15:20:00Z,72,20,true,5400
-P-0013,"Kecewa sama koneksi server, ini turnamen kedua kalinya kejadian lag pas final.",twitter,2026-06-14T22:00:00Z,55,12,true,5400
-P-0014,"Biaya pendaftaran naik terus tiap season, agak berat buat tim kecil.",instagram,2026-06-15T10:00:00Z,30,4,true,2100
-P-0015,"Overall pengalaman ikut turnamen ini positif, cuma perlu perbaikan di sisi koneksi server.",discord,2026-06-15T16:30:00Z,18,2,true,850
-P-0016,"Nexus Cube emang beda kelasnya, turnamen paling niat tahun ini!",twitter,2026-06-20T12:00:00Z,95,30,true,5400
-P-0017,"War tiket kali ini lebih tertib, sistem antrian onlinenya membantu banget.",discord,2026-06-21T11:00:00Z,20,2,true,850
-P-0018,"Match day berjalan lancar, gak ada kendala teknis berarti minggu ini.",discord,2026-06-22T19:30:00Z,14,1,true,850
-P-0019,"Prize pool dan hadiah turnamen makin menarik tiap season, keep it up!",instagram,2026-06-23T09:15:00Z,50,7,true,2100
-P-0020,"Biasa aja sih minggu ini, gak ada yang spesial tapi juga gak mengecewakan.",instagram,2026-06-24T14:00:00Z,9,0,true,2100
+P-0001,"Panitia transparan soal hasil voting MVP, gak ada drama.",discord,2026-05-04T18:34:00Z,30,12,false,957
+P-0002,"Overlay statistiknya keren pas normal, sayang suka error di momen krusial.",twitter,2026-05-05T07:11:00Z,53,12,false,4766
+P-0003,"Sistem seeding-nya masuk akal, gak ada lagi tim kuat ketemu di fase awal doang. di server utama",instagram,2026-05-05T17:13:00Z,57,6,true,2196
+P-0004,"Sistem seeding-nya masuk akal, gak ada lagi tim kuat ketemu di fase awal doang. ya",twitter,2026-05-08T10:10:00Z,8,4,true,3088
+P-0005,"Panitia komunikatif banget ya, ganti rules H-1 tanpa kabar, keren inisiatifnya.",telegram,2026-05-05T21:55:00Z,71,25,true,749
+P-0006,Panitia kurang komunikasi soal perubahan format match H-1 sebelum hari-H. pas fase grup,twitter,2026-05-09T10:24:00Z,30,14,true,6938
+P-0007,"Panitia ganti rules mendadak sehari sebelum match, gak ada sosialisasi jelas. (match kemarin) 😭",instagram,2026-05-06T15:08:00Z,39,20,true,3818
+P-0008,"Min, requirement device minimum buat ikut kualifikasi apa aja? @admin",telegram,2026-05-04T14:42:00Z,55,2,true,169
+P-0009,"Mantap nih war tiket, checkout 45 menit error mulu, pengalaman terbaik pokoknya.",twitter,2026-05-06T13:44:00Z,56,27,false,7968
+P-0010,"Overall pengalaman ikut turnamen ini positif, salut buat panitia. 😅",instagram,2026-05-05T11:06:00Z,55,0,true,2077
+P-0011,Match hari ini tayang jam berapa ya di jadwal terbaru? deh,twitter,2026-05-09T08:43:00Z,4,8,true,4139
+P-0012,"Prize pool-nya emang gede, cuma sayang server-nya masih suka lag pas match penting. deh",twitter,2026-05-07T20:36:00Z,36,9,true,7873
+P-0013,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya. squad kita",discord,2026-05-07T16:01:00Z,34,17,false,778
+P-0014,"Kualitas produksi turnamen ini naik drastis dibanding season lalu, apresiasi tim produksinya. pas semifinal 🔥",telegram,2026-05-09T10:44:00Z,7,9,true,344
+P-0015,"Prize pool dan hadiah turnamen makin menarik tiap season, keep it up!...",instagram,2026-05-05T21:25:00Z,55,5,true,3916
+P-0016,"Respon admin gercep banget ya, cuma 4 hari baru dibales, keren emang.",twitter,2026-05-08T15:50:00Z,92,16,true,1719
+P-0017,"Bracket-nya jelas dan gampang dipahami, rules juga fair buat semua tim.",discord,2026-05-04T16:56:00Z,28,0,true,636
+P-0018,"Random question, ada yang punya rekomendasi setting sensitivity buat mobile gak.",discord,2026-05-10T22:29:00Z,42,2,true,264
+P-0019,Nonton dari mana ya kalau streaming utamanya penuh? 😭,telegram,2026-05-09T15:21:00Z,59,12,false,851
+P-0020,"Proses verifikasi akun peserta ribet banget, dokumen udah lengkap tapi masih ditolak. di server utama",telegram,2026-05-05T11:27:00Z,18,23,true,890
+P-0021,"Standar aja pengalamannya, sesuai ekspektasi lah. 🙏",discord,2026-05-09T13:04:00Z,7,11,false,249
+P-0022,"Kapan war tiket season depan dibuka, biar bisa siap-siap dari sekarang.",twitter,2026-05-04T19:42:00Z,31,7,true,6437
+P-0023,"Standar aja pengalamannya, sesuai ekspektasi lah.",twitter,2026-05-05T23:36:00Z,58,5,true,4162
+P-0024,"War tiket kali ini lebih tertib, sistem antrian onlinenya membantu banget.",instagram,2026-05-08T19:16:00Z,49,0,true,1623
+P-0025,"GG buat panitia, semua match on time gak ada delay sama sekali.",discord,2026-05-07T16:01:00Z,21,9,true,808
+P-0026,"Komunitasnya asik bgt, tapi moderasi di grup official kadang kurang tegas. (match kemarin)",instagram,2026-05-08T19:27:00Z,38,11,false,3004
+P-0027,"Hadiahnya oke, cuma pengiriman merchandise-nya suka telat berminggu-minggu.",telegram,2026-05-06T16:55:00Z,16,4,true,808
+P-0028,"Venue kece, sound system oke, tapi antrian masuknya berantakan banget gak ada yg atur.",telegram,2026-05-06T21:31:00Z,35,10,true,167
+P-0029,Match hari ini tayang jam berapa ya di jadwal terbaru?,instagram,2026-05-06T20:49:00Z,49,12,true,2223
+P-0030,"Top markotop jadwalnya, delay 2 jam tanpa kabar, panitia emang totalitas. squad kita",twitter,2026-05-10T09:32:00Z,39,4,true,1794
+P-0031,"Top markotop jadwalnya, delay 2 jam tanpa kabar, panitia emang totalitas.",twitter,2026-05-10T09:53:00Z,87,2,true,6500
+P-0032,"Venue-nya kepanasan banget, AC-nya kayak gak nyala, ganggu konsentrasi main. (match kemarin)",discord,2026-05-07T23:38:00Z,38,27,false,793
+P-0033,"MC-nya profesional banget, salah nama tim 5 kali dalam satu segmen, mantap. di server utama sih",twitter,2026-05-05T15:28:00Z,84,17,true,1611
+P-0034,"Overlay statistiknya keren pas normal, sayang suka error di momen krusial.",discord,2026-05-09T18:10:00Z,37,9,true,551
+P-0035,"MC-nya profesional banget, salah nama tim 5 kali dalam satu segmen, mantap. sih",telegram,2026-05-06T23:33:00Z,60,25,false,648
+P-0036,"War tiket kemarin lancar banget, langsung dapet slot buat squad gw. GG admin! squad kita",telegram,2026-05-05T07:00:00Z,53,10,true,377
+P-0037,"Titip promo dikit, warung aku buka giveaway topup ya, cek bio.",telegram,2026-05-13T16:14:00Z,52,5,true,494
+P-0038,"Overall pengalaman ikut turnamen ini positif, salut buat panitia.",telegram,2026-05-11T12:32:00Z,35,7,true,506
+P-0039,"Interaksi admin di grup official ramah dan informatif, betah nanya-nanya....",instagram,2026-05-17T23:46:00Z,48,10,true,1199
+P-0040,"Panitia ganti rules mendadak sehari sebelum match, gak ada sosialisasi jelas.",twitter,2026-05-11T09:50:00Z,77,2,true,2794
+P-0041,"Hadiahnya oke, cuma pengiriman merchandise-nya suka telat berminggu-minggu. tim gw",telegram,2026-05-11T19:51:00Z,26,2,true,878
+P-0042,"MC-nya profesional bgt, salah nama tim 5 kali dalam satu segmen, mantap. tim gw",discord,2026-05-14T18:57:00Z,95,10,true,489
+P-0043,Prize pool untuk juara 4 sampai 8 itu dibagi rata apa beda-beda? squad kita,discord,2026-05-14T11:16:00Z,34,1,true,376
+P-0044,"Overlay statistiknya keren pas normal, sayang suka error di momen krusial.",discord,2026-05-12T20:48:00Z,57,6,true,1086
+P-0045,Match hari ini tayang jam berapa ya di jadwal terbaru? tim gw,twitter,2026-05-14T07:17:00Z,40,1,false,4859
+P-0046,"Streaming-nya jernih banget kali ini, kamera angle-nya juga enak ditonton.",instagram,2026-05-17T20:24:00Z,25,12,true,2457
+P-0047,Sistem laporan bug di form online-nya cepat direspon tim teknis. 😅,discord,2026-05-13T11:20:00Z,34,12,true,295
+P-0048,"Casting-nya lucu dan enak didengerin, tapi kualitas streaming-nya perlu ditingkatin lagi. 😭",twitter,2026-05-14T11:13:00Z,3,9,true,2398
+P-0049,"Streaming-nya jernih banget kok, buffering tiap 5 menit doang, lancar jaya. pas semifinal 🔥",instagram,2026-05-14T10:32:00Z,18,12,true,2545
+P-0050,Match hari ini tayang jam berapa ya di jadwal terbaru?,discord,2026-05-15T11:54:00Z,39,3,true,510
+P-0051,"War tiket kali ini lebih tertib, sistem antrian onlinenya membantu banget. (match kemarin) sih",discord,2026-05-13T19:20:00Z,20,1,true,1118
+P-0052,"Overlay statistiknya keren pas normal, sayang suka error di momen krusial.",twitter,2026-05-12T08:38:00Z,56,7,true,4755
+P-0053,"Server match kemarin lag parah pas grand final, bikin momen penting jadi kacau. pas fase grup",instagram,2026-05-11T07:52:00Z,37,15,true,3160
+P-0054,"Rules anti-cheat-nya ketat, jadi kompetisinya berasa lebih fair.",twitter,2026-05-15T20:18:00Z,20,11,true,2896
+P-0055,"Biasa aja sih minggu ini, gak ada yang spesial tapi juga gak mengecewakan. (match kemarin)",twitter,2026-05-15T08:08:00Z,33,1,true,7321
+P-0056,"Koordinasi antara caster dan analis pas review match enak diikuti, gak membosankan. deh",discord,2026-05-13T14:41:00Z,38,1,true,1034
+P-0057,"Panitia sigap banget pas ada laporan cheat dari peserta, langsung ditindak. @admin",instagram,2026-05-16T16:57:00Z,46,11,true,1044
+P-0058,"GG buat panitia, semua match on time gak ada delay sama sekali. pas semifinal",discord,2026-05-11T23:05:00Z,9,7,true,572
+P-0059,Follow ig aku dong buat giveaway skin ML gratis @random_acc123 di server utama,telegram,2026-05-16T21:52:00Z,7,5,false,733
+P-0060,"Mohon info dong kalau ada turnamen Free Fire selanjutnya, pengen ikut lagi.",telegram,2026-05-11T08:16:00Z,23,11,true,624
+P-0061,"Biasa aja sih minggu ini, gak ada yang spesial tapi juga gak mengecewakan. min",discord,2026-05-15T21:35:00Z,33,1,false,397
+P-0062,"Bracket adil kok menurut gw, cuma jadwalnya suka mundur-mundur tanpa pemberitahuan jelas.",twitter,2026-05-15T19:16:00Z,19,10,true,2630
+P-0063,"Prize pool nya gede banget taun ini, makin semangat push rank buat kualifikasi. tim gw",telegram,2026-05-12T13:22:00Z,35,2,true,193
+P-0064,"Standar aja pengalamannya, sesuai ekspektasi lah.",discord,2026-05-17T16:10:00Z,34,6,true,1010
+P-0065,"Bracket-nya keliatan gak seimbang, ada grup isinya tim kuat semua.",twitter,2026-05-14T09:37:00Z,93,18,true,2304
+P-0066,"Prize pool nya gede bgt taun ini, makin semangat push rank buat kualifikasi. @admin",telegram,2026-05-13T18:11:00Z,55,9,true,698
+P-0067,"Bug scoreboard bikin skor sempat kebalik, untung buru-buru dikoreksi tapi bikin panik. tim gw ya",discord,2026-05-11T23:20:00Z,45,11,true,1070
+P-0068,"Bracket update-nya real-time, jadi gampang mantau tim jagoan sendiri.",telegram,2026-05-11T16:02:00Z,2,3,true,634
+P-0069,"Koordinasi antara caster dan analis pas review match enak diikuti, gak membosankan. deh",telegram,2026-05-16T10:08:00Z,57,6,false,894
+P-0070,"Venue kece, sound system oke, tapi antrian masuknya berantakan bgt gak ada yang atur. min",instagram,2026-05-13T13:15:00Z,9,9,true,2470
+P-0071,"Overall pengalaman ikut turnamen ini positif, salut buat panitia. di server utama",telegram,2026-05-17T07:15:00Z,42,0,false,634
+P-0072,"Match day berjalan lancar, gak ada kendala teknis berarti minggu ini. 🔥",discord,2026-05-11T22:58:00Z,5,12,true,598
+P-0073,"Prize pool yang dijanjiin di poster beda sama yang diumumin pas final, kok bisa? ya",twitter,2026-05-19T14:29:00Z,17,21,true,4923
+P-0074,"Tiket nonton offline war-nya susah banget, keburu abis dalam hitungan menit.",telegram,2026-05-24T14:16:00Z,42,24,true,450
+P-0075,Follow ig aku dong buat giveaway skin ML gratis @random_acc123,telegram,2026-05-20T15:32:00Z,55,7,true,280
+P-0076,"Hadiahnya oke, cuma pengiriman merchandise-nya suka telat berminggu-minggu.",instagram,2026-05-18T21:40:00Z,52,3,true,2887
+P-0077,"Prize pool nya gede banget taun ini, makin semangat push rank buat kualifikasi. di server utama",twitter,2026-05-19T10:31:00Z,38,6,true,3529
+P-0078,"Casting-nya lucu dan enak didengerin, tapi kualitas streaming-nya perlu ditingkatin lagi. 😅",telegram,2026-05-22T18:37:00Z,45,12,true,264
+P-0079,"Mantap nih war tiket, checkout 45 menit error mulu, pengalaman terbaik pokoknya. 🔥",instagram,2026-05-20T19:49:00Z,39,15,true,3429
+P-0080,"Kecewa sama koneksi server, ini turnamen kedua kalinya kejadian lag pas final. 🔥",telegram,2026-05-18T17:12:00Z,74,15,false,892
+P-0081,Ada rencana bikin divisi khusus buat pemain casual gak min?,discord,2026-05-18T12:02:00Z,45,6,true,749
+P-0082,"Venue kece, sound system oke, tapi antrian masuknya berantakan banget gak ada yang atur. pas semifinal 😭",twitter,2026-05-19T20:38:00Z,26,6,true,7682
+P-0083,"Venue-nya keren, setup panggung sama lighting-nya bikin suasana makin hype.",instagram,2026-05-20T14:56:00Z,6,0,true,3963
+P-0084,"Wah keren banget ya servernya, lag pas final doang, biasa aja itu mah.",instagram,2026-05-19T19:55:00Z,30,27,false,2549
+P-0085,Nonton dari mana ya kalau streaming utamanya penuh? woy,discord,2026-05-24T23:06:00Z,16,2,true,295
+P-0086,"Refund tiket yg dibatalin sampe sekarang belum cair, udah sebulan lebih. di server utama",telegram,2026-05-22T10:36:00Z,57,19,true,210
+P-0087,Format Bo3 di semifinal bikin pertandingannya makin seru dan gak gampang ditebak. sih,discord,2026-05-24T16:45:00Z,51,4,true,1117
+P-0088,"Ada bug di sistem skor pas fase grup, parah banget ganggu penilaian.",discord,2026-05-24T09:14:00Z,62,22,true,328
+P-0089,Kapan buka lowongan volunteer buat event berikutnya min?,discord,2026-05-18T23:23:00Z,25,11,true,1083
+P-0090,"Bagus banget nih refund-nya, cuma nunggu sebulan doang, cepet kan ya. pas semifinal",discord,2026-05-21T08:39:00Z,28,14,false,754
+P-0091,"Prize pool-nya jujur bener nih, beda sama poster doang, transparan banget.",instagram,2026-05-20T09:04:00Z,30,12,true,2677
+P-0092,"Match day kemarin seru bgt, panitia on point ngatur jadwalnya....",twitter,2026-05-21T14:44:00Z,10,2,true,3719
+P-0093,"Delay pertandingan udah 2 jam tanpa info jelas, gimana sih panitianya. min",twitter,2026-05-18T21:30:00Z,86,9,false,3900
+P-0094,"Bagus banget nih refund-nya, cuma nunggu sebulan doang, cepet kan ya.",discord,2026-05-22T15:47:00Z,34,9,true,1059
+P-0095,"Prize pool nya gede banget taun ini, makin semangat push rank buat kualifikasi. min",twitter,2026-05-21T09:32:00Z,11,9,true,5910
+P-0096,"Mohon info dong kalau ada turnamen Free Fire selanjutnya, pengen ikut lagi. di server utama woy",twitter,2026-05-23T12:55:00Z,52,2,true,5045
+P-0097,"Overlay statistiknya keren pas normal, sayang suka error di momen krusial. min",instagram,2026-05-21T18:57:00Z,36,11,true,2707
+P-0098,"Casting & host-nya lucu-lucu tapi tetep informatif, betah nonton sampe akhir.",twitter,2026-05-21T21:59:00Z,49,12,true,4544
+P-0099,"Panitia ramah bgt sih orangnya, tapi sistem war tiket-nya masih perlu banyak perbaikan.",instagram,2026-05-18T07:23:00Z,18,10,false,2599
+P-0100,"Admin fast respon pas ada masalah pendaftaran, salut deh pelayanannya. pas semifinal woy",instagram,2026-05-24T08:43:00Z,9,10,true,3062
+P-0101,"Panitia sigap bgt pas ada laporan cheat dari peserta, langsung ditindak.",twitter,2026-05-20T18:09:00Z,56,4,true,4314
+P-0102,"Match day berjalan lancar, gak ada kendala teknis berarti minggu ini. woy",instagram,2026-05-21T11:29:00Z,52,3,true,1682
+P-0103,"Prize pool nya gede bgt taun ini, makin semangat push rank buat kualifikasi. sih",twitter,2026-05-22T16:43:00Z,3,4,true,7521
+P-0104,"Suka sama konsep turnamennya, sayang komunikasi soal aturan masih simpang siur. tim gw",twitter,2026-05-21T11:25:00Z,2,1,true,2613
+P-0105,Respon cs di discord cepet banget pas gw nanya soal jadwal ulang. tim gw,telegram,2026-05-20T08:35:00Z,9,5,true,376
+P-0106,"Min, requirement device minimum buat ikut kualifikasi apa aja? pas fase grup...",discord,2026-05-23T12:46:00Z,58,1,true,411
+P-0107,"Sistem seeding-nya masuk akal, gak ada lagi tim kuat ketemu di fase awal doang.",telegram,2026-05-21T20:28:00Z,31,6,true,820
+P-0108,"Panitia transparan soal hasil voting MVP, gak ada drama. 🙏",twitter,2026-05-20T07:33:00Z,14,0,true,6043
+P-0109,"Hadiahnya oke, cuma pengiriman merchandise-nya suka telat berminggu-minggu. squad kita",instagram,2026-05-27T08:05:00Z,20,10,true,2818
+P-0110,"Casting & host-nya lucu-lucu tapi tetep informatif, betah nonton sampe akhir. squad kita",discord,2026-05-28T22:14:00Z,36,9,true,256
+P-0111,"Link streaming cadangan gak disediain pas server utama down, penonton pada kebingungan. @admin",instagram,2026-05-27T22:21:00Z,25,3,true,1677
+P-0112,"Mohon info dong kalau ada turnamen Free Fire selanjutnya, pengen ikut lagi....",telegram,2026-05-25T22:13:00Z,40,7,true,326
+P-0113,Ada rencana bikin divisi khusus buat pemain casual gak min? pas semifinal,instagram,2026-05-25T23:02:00Z,3,3,true,3149
+P-0114,"Admin fast respon pas ada masalah pendaftaran, salut deh pelayanannya. pas fase grup",instagram,2026-05-28T17:14:00Z,57,5,true,2742
+P-0115,"Numpang tanya grup fans club official di mana ya, susah nyarinya.",twitter,2026-05-27T10:59:00Z,6,11,true,2211
+P-0116,"Panitia transparan soal hasil voting MVP, gak ada drama.",twitter,2026-05-27T21:55:00Z,33,4,true,6593
+P-0117,Sistem laporan bug di form online-nya cepat direspon tim teknis. 😅,instagram,2026-05-25T08:41:00Z,17,3,true,3530
+P-0118,"Bracket-nya jelas dan gampang dipahami, rules juga fair buat semua tim. min",discord,2026-05-28T23:11:00Z,10,12,true,885
+P-0119,"War tiket kemarin lancar banget, langsung dapet slot buat squad gw. GG admin!",discord,2026-05-26T08:45:00Z,14,1,true,273
+P-0120,"Match day kemarin seru banget, panitia on point ngatur jadwalnya. di server utama",discord,2026-05-26T18:51:00Z,32,4,true,607
+P-0121,Kapan pengumuman bracket fase knockout keluar ya min?,instagram,2026-05-30T14:08:00Z,54,4,true,1577
+P-0122,Match hari ini tayang jam berapa ya di jadwal terbaru?,instagram,2026-05-26T15:26:00Z,15,3,false,3554
+P-0123,"Admin fast respon pas ada masalah pendaftaran, salut deh pelayanannya. sih",twitter,2026-05-25T20:08:00Z,4,1,false,4745
+P-0124,"Sistem tie-break di fase grup gak jelas, bikin protes dari beberapa tim. min",telegram,2026-05-30T23:31:00Z,26,25,true,577
+P-0125,"Match day kemarin seru bgt, panitia on point ngatur jadwalnya. 😅",telegram,2026-05-26T07:03:00Z,18,6,false,897
+P-0126,"Link streaming cadangan gak disediain pas server utama down, penonton pada kebingungan.",telegram,2026-05-30T17:08:00Z,97,16,false,517
+P-0127,"Bracket update-nya real-time, jadi gampang mantau tim jagoan sendiri.",telegram,2026-05-31T23:02:00Z,5,9,true,668
+P-0128,Respon cs di discord cepet banget pas gw nanya soal jadwal ulang.,telegram,2026-05-25T16:07:00Z,48,4,true,853
+P-0129,Prize pool untuk juara 4 sampai 8 itu dibagi rata apa beda-beda? (match kemarin) 🙏,twitter,2026-05-28T11:31:00Z,39,8,false,2351
+P-0130,"Refund tiket yang dibatalin sampe sekarang belum cair, udah sebulan lebih. min",twitter,2026-05-28T19:29:00Z,83,11,true,3693
+P-0131,"Prize pool dan hadiah turnamen makin menarik tiap season, keep it up! min",discord,2026-05-30T07:45:00Z,10,5,true,1125
+P-0132,"Sistem anti-cheat-nya kayaknya bolong, banyak laporan cheater gak ditindak.",discord,2026-05-31T23:04:00Z,86,27,true,1041
+P-0133,"War tiket kemarin lancar banget, langsung dapet slot buat squad gw. GG admin! tim gw 😭",instagram,2026-05-27T11:55:00Z,24,12,true,1195
+P-0134,Sistem laporan bug di form online-nya cepat direspon tim teknis.,telegram,2026-05-26T15:22:00Z,11,2,false,743
+P-0135,"Sistem tie-break di fase grup gak jelas, bikin protes dari beberapa tim.",discord,2026-05-27T15:06:00Z,96,21,false,444
+P-0136,"Panitia transparan soal hasil voting MVP, gak ada drama. pas fase grup woy",telegram,2026-05-26T18:13:00Z,57,3,true,481
+P-0137,"Hadiahnya oke, cuma pengiriman merchandise-nya suka telat berminggu-minggu.",discord,2026-05-29T10:14:00Z,28,6,true,1172
+P-0138,"Venue kece, sound system oke, tapi antrian masuknya berantakan banget gak ada yang atur. woy",instagram,2026-05-26T18:07:00Z,24,9,true,1154
+P-0139,"Kualitas produksi turnamen ini naik drastis dibanding season lalu, apresiasi tim produksinya.",twitter,2026-05-31T07:35:00Z,38,6,true,5387
+P-0140,"Kualitas produksi turnamen ini naik drastis dibanding season lalu, apresiasi tim produksinya. di server utama woy",telegram,2026-05-29T22:37:00Z,15,2,true,700
+P-0141,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya. tim gw",discord,2026-05-30T22:19:00Z,17,14,true,1033
+P-0142,Sistem laporan bug di form online-nya cepat direspon tim teknis.,telegram,2026-05-26T08:32:00Z,3,12,true,402
+P-0143,"Bug scoreboard bikin skor sempat kebalik, untung buru-buru dikoreksi tapi bikin panik. (match kemarin)",instagram,2026-05-27T19:45:00Z,15,22,true,3511
+P-0144,Jadwal rilis di awal season bikin gampang atur waktu buat nonton semua match.,discord,2026-05-31T09:26:00Z,36,10,true,1014
+P-0145,Match hari ini tayang jam berapa ya di jadwal terbaru? tim gw,instagram,2026-06-06T23:54:00Z,47,1,true,1475
+P-0146,"Titip promo dikit, warung aku buka giveaway topup ya, cek bio.",telegram,2026-06-03T13:54:00Z,44,3,true,453
+P-0147,"Bracket-nya jelas dan gampang dipahami, rules juga fair buat semua tim. 😭",instagram,2026-06-01T16:11:00Z,47,8,false,1017
+P-0148,Sistem laporan bug di form online-nya cepat direspon tim teknis. squad kita,discord,2026-06-03T09:43:00Z,51,0,true,858
+P-0149,"Bracket update-nya real-time, jadi gampang mantau tim jagoan sendiri. woy",twitter,2026-06-01T12:26:00Z,22,3,true,5271
+P-0150,"Panitia komunikatif banget ya, ganti rules H-1 tanpa kabar, keren inisiatifnya. 😅",twitter,2026-06-03T14:20:00Z,83,23,true,4877
+P-0151,"Sistem seeding-nya masuk akal, gak ada lagi tim kuat ketemu di fase awal doang.",telegram,2026-06-01T19:51:00Z,27,4,false,310
+P-0152,"Kecewa sama koneksi server, ini turnamen kedua kalinya kejadian lag pas final. pas fase grup",discord,2026-06-06T10:07:00Z,16,7,true,1096
+P-0153,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya.",telegram,2026-06-06T15:48:00Z,32,12,true,175
+P-0154,"Hadiahnya oke, cuma pengiriman merchandise-nya suka telat berminggu-minggu.",instagram,2026-06-05T13:03:00Z,45,5,true,2733
+P-0155,Jadwal rilis di awal season bikin gampang atur waktu buat nonton semua match.,instagram,2026-06-03T20:43:00Z,10,1,true,1493
+P-0156,"Kapan war tiket season depan dibuka, biar bisa siap-siap dari sekarang. (match kemarin)",twitter,2026-06-07T20:52:00Z,52,5,true,6864
+P-0157,"Admin lambat respon banget soal komplain pembayaran, udah 3 hari gak dibales.",instagram,2026-06-05T14:02:00Z,23,29,true,3765
+P-0158,"Min, requirement device minimum buat ikut kualifikasi apa aja? di server utama",twitter,2026-06-07T13:19:00Z,2,5,false,6441
+P-0159,"Kualitas produksi turnamen ini naik drastis dibanding season lalu, apresiasi tim produksinya. pas fase grup",telegram,2026-06-05T09:12:00Z,3,0,true,745
+P-0160,"Hadiahnya oke, cuma pengiriman merchandise-nya suka telat berminggu-minggu.",telegram,2026-06-01T13:17:00Z,29,11,true,497
+P-0161,"Slot war tiket kali ini adil, gak keburu diborong bot kayak dulu....",discord,2026-06-02T17:52:00Z,36,7,true,841
+P-0162,"Proses verifikasi akun peserta ribet banget, dokumen udah lengkap tapi masih ditolak.",discord,2026-06-03T17:31:00Z,31,14,true,1067
+P-0163,"Delay pertandingan udah 2 jam tanpa info jelas, gimana sih panitianya. deh",discord,2026-06-05T19:01:00Z,64,12,true,1095
+P-0164,"Bagus banget nih refund-nya, cuma nunggu sebulan doang, cepet kan ya. min",twitter,2026-06-03T23:05:00Z,99,9,false,3728
+P-0165,"Server match kemarin lag parah pas grand final, bikin momen penting jadi kacau. ya",discord,2026-06-03T20:23:00Z,83,17,true,823
+P-0166,"Bracket adil kok menurut gw, cuma jadwalnya suka mundur-mundur tanpa pemberitahuan jelas. (match kemarin)",instagram,2026-06-01T11:28:00Z,27,2,false,3563
+P-0167,"Casting-nya lucu dan enak didengerin, tapi kualitas streaming-nya perlu ditingkatin lagi.",discord,2026-06-02T13:52:00Z,21,0,true,1130
+P-0168,Ada yang tau format match-nya BO1 apa BO3 buat semifinal? woy,discord,2026-06-02T07:28:00Z,19,5,true,805
+P-0169,Kapan pengumuman bracket fase knockout keluar ya min? pas fase grup,telegram,2026-06-07T11:39:00Z,10,10,true,780
+P-0170,"Bracket-nya jelas dan gampang dipahami, rules juga fair buat semua tim. @admin",instagram,2026-06-01T11:58:00Z,56,6,true,1921
+P-0171,Boleh tau kontak admin buat urusan sponsorship gak? pas semifinal,instagram,2026-06-02T08:33:00Z,59,10,true,2929
+P-0172,"Venue-nya keren, setup panggung sama lighting-nya bikin suasana makin hype.",instagram,2026-06-04T09:33:00Z,10,12,true,1175
+P-0173,"Casting & host-nya lucu-lucu tapi tetep informatif, betah nonton sampe akhir.",twitter,2026-06-05T12:31:00Z,30,11,true,2339
+P-0174,Nonton dari mana ya kalau streaming utamanya penuh? deh,twitter,2026-06-05T17:52:00Z,46,3,true,6862
+P-0175,"Koordinasi antara caster dan analis pas review match enak diikuti, gak membosankan. (match kemarin)...",discord,2026-06-06T16:24:00Z,53,1,true,1154
+P-0176,Respon cs di discord cepet banget pas gw nanya soal jadwal ulang.,twitter,2026-06-06T21:53:00Z,54,6,true,3068
+P-0177,Ada rencana bikin divisi khusus buat pemain casual gak min? deh,twitter,2026-06-06T17:49:00Z,14,9,true,7228
+P-0178,"Komunitasnya asik banget, tapi moderasi di grup official kadang kurang tegas.",instagram,2026-06-04T11:07:00Z,14,6,true,3229
+P-0179,"Prize pool nya gede banget taun ini, makin semangat push rank buat kualifikasi. di server utama",discord,2026-06-04T10:30:00Z,5,3,true,290
+P-0180,"Sistem seeding-nya masuk akal, gak ada lagi tim kuat ketemu di fase awal doang. 😅",instagram,2026-06-07T09:42:00Z,26,9,true,1048
+P-0181,Voice chat resmi buat coordinator tim lag parah pas technical meeting. 🙏,telegram,2026-06-10T18:37:00Z,92,24,true,325
+P-0182,"Casting-nya lucu dan enak didengerin, tapi kualitas streaming-nya perlu ditingkatin lagi. tim gw",telegram,2026-06-11T20:45:00Z,44,0,true,239
+P-0183,Voice chat resmi buat coordinator tim lag parah pas technical meeting.,discord,2026-06-14T15:11:00Z,76,29,true,354
+P-0184,"Panitia ganti rules mendadak sehari sebelum match, gak ada sosialisasi jelas. deh",twitter,2026-06-08T17:23:00Z,20,5,true,4839
+P-0185,"Komunitasnya asik banget, tapi moderasi di grup official kadang kurang tegas. sih",instagram,2026-06-14T17:03:00Z,34,1,true,3563
+P-0186,Kapan pengumuman bracket fase knockout keluar ya min?,discord,2026-06-11T12:10:00Z,50,1,true,991
+P-0187,"Refund tiket yang dibatalin sampe sekarang belum cair, udah sebulan lebih.",discord,2026-06-12T09:52:00Z,66,22,true,533
+P-0188,Prize pool untuk juara 4 sampai 8 itu dibagi rata apa beda-beda? tim gw,instagram,2026-06-12T08:16:00Z,39,4,true,1733
+P-0189,"Overlay statistik pas live sering salah, bikin bingung yang lagi nonton.",discord,2026-06-14T09:06:00Z,29,2,false,802
+P-0190,"Casting-nya lucu dan enak didengerin, tapi kualitas streaming-nya perlu ditingkatin lagi. tim gw 🔥",discord,2026-06-14T19:54:00Z,13,1,true,649
+P-0191,Panitia kurang komunikasi soal perubahan format match H-1 sebelum hari-H.,discord,2026-06-13T08:37:00Z,71,17,true,507
+P-0192,Kapan pengumuman bracket fase knockout keluar ya min?,instagram,2026-06-14T20:44:00Z,59,8,false,2563
+P-0193,"Bagus banget nih refund-nya, cuma nunggu sebulan doang, cepet kan ya.",discord,2026-06-12T13:41:00Z,72,6,true,440
+P-0194,"Panitia ramah banget sih orangnya, tapi sistem war tiket-nya masih perlu banyak perbaikan. (match kemarin) 🔥",instagram,2026-06-09T14:01:00Z,13,12,true,1451
+P-0195,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya. (match kemarin)",twitter,2026-06-13T16:49:00Z,28,12,true,2048
+P-0196,"Link streaming cadangan gak disediain pas server utama down, penonton pada kebingungan.",telegram,2026-06-12T18:02:00Z,35,10,true,854
+P-0197,"Refund tiket yang dibatalin sampe sekarang belum cair, udah sebulan lebih. pas semifinal 🙏",instagram,2026-06-10T19:50:00Z,90,2,true,3273
+P-0198,"Kapan war tiket season depan dibuka, biar bisa siap-siap dari sekarang.",instagram,2026-06-12T11:34:00Z,40,1,true,3889
+P-0199,Kapan pengumuman bracket fase knockout keluar ya min?,instagram,2026-06-11T07:15:00Z,49,10,true,1948
+P-0200,"Server match kemarin lag parah pas grand final, bikin momen penting jadi kacau.",twitter,2026-06-13T12:39:00Z,64,10,true,7067
+P-0201,"Admin lambat respon bgt soal komplain pembayaran, udah 3 hari gak dibales. squad kita",instagram,2026-06-08T14:38:00Z,55,17,true,1039
+P-0202,"Venue kece, sound system oke, tapi antrian masuknya berantakan bgt gak ada yang atur.",instagram,2026-06-10T07:38:00Z,30,0,false,2915
+P-0203,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya.",instagram,2026-06-13T12:16:00Z,28,20,true,2796
+P-0204,"MC-nya kurang persiapan, banyak salah nyebut nama tim pas pengumuman.",telegram,2026-06-10T07:12:00Z,32,22,false,864
+P-0205,Boleh minta link rules lengkap versi PDF gak buat dibaca offline? woy,telegram,2026-06-11T23:37:00Z,29,3,true,672
+P-0206,"Streaming-nya putus-putus terus pas partai final, kecewa banget nontonnya.",twitter,2026-06-08T18:08:00Z,99,5,true,5379
+P-0207,"Match day berjalan lancar, gak ada kendala teknis berarti minggu ini.",instagram,2026-06-08T23:31:00Z,28,2,false,3571
+P-0208,"Wah keren banget ya servernya, lag pas final doang, biasa aja itu mah. @admin",instagram,2026-06-11T23:12:00Z,77,17,true,2625
+P-0209,"Delay pertandingan udah 2 jam tanpa info jelas, gimana sih panitianya. woy",telegram,2026-06-09T17:21:00Z,47,16,true,521
+P-0210,"Kualitas mic komentator jelek bgt, suaranya pecah terus sepanjang siaran.",telegram,2026-06-11T11:19:00Z,25,30,true,801
+P-0211,"Panitia sigap banget pas ada laporan cheat dari peserta, langsung ditindak. ya",twitter,2026-06-13T08:14:00Z,60,9,true,5940
+P-0212,Kapan biasanya hasil technical meeting diumumin ke publik?,twitter,2026-06-11T19:43:00Z,44,12,true,5294
+P-0213,"Venue kece, sound system oke, tapi antrian masuknya berantakan bgt gak ada yang atur.",discord,2026-06-08T10:11:00Z,12,9,false,295
+P-0214,"Ada bug di sistem skor pas fase grup, parah banget ganggu penilaian.",discord,2026-06-13T17:03:00Z,91,28,true,676
+P-0215,"Top markotop jadwalnya, delay 2 jam tanpa kabar, panitia emang totalitas.",discord,2026-06-08T08:30:00Z,76,3,true,621
+P-0216,"Mohon info dong kalau ada turnamen Free Fire selanjutnya, pengen ikut lagi. woy",telegram,2026-06-11T19:00:00Z,21,4,true,199
+P-0217,"Streaming-nya jernih banget kali ini, kamera angle-nya juga enak ditonton.",twitter,2026-06-20T18:27:00Z,47,0,true,4184
+P-0218,"Match day kemarin seru banget, panitia on point ngatur jadwalnya. 🔥",discord,2026-06-21T19:41:00Z,51,11,true,610
+P-0219,"Link streaming cadangan gak disediain pas server utama down, penonton pada kebingungan. 😭",instagram,2026-06-16T20:22:00Z,35,28,false,2579
+P-0220,"Suka sama konsep turnamennya, sayang komunikasi soal aturan masih simpang siur. 😭",telegram,2026-06-21T13:53:00Z,28,2,true,440
+P-0221,Boleh minta link rules lengkap versi PDF gak buat dibaca offline? pas fase grup 😭,instagram,2026-06-17T13:13:00Z,33,11,false,1800
+P-0222,"Merchandise official-nya keren, desainnya related banget sama tema turnamen taun ini. pas semifinal 🔥",discord,2026-06-17T17:01:00Z,6,8,true,1186
+P-0223,"Streaming-nya jernih banget kok, buffering tiap 5 menit doang, lancar jaya.",instagram,2026-06-20T10:00:00Z,60,29,false,3286
+P-0224,"MC-nya profesional banget, salah nama tim 5 kali dalam satu segmen, mantap. 🔥",telegram,2026-06-16T11:36:00Z,38,26,true,307
+P-0225,Kapan biasanya hasil technical meeting diumumin ke publik?,discord,2026-06-21T10:09:00Z,56,6,false,872
+P-0226,Follow ig aku dong buat giveaway skin ML gratis @random_acc123,telegram,2026-06-15T17:55:00Z,10,12,false,818
+P-0227,"Koordinasi antara caster dan analis pas review match enak diikuti, gak membosankan. di server utama",discord,2026-06-20T14:34:00Z,16,3,true,954
+P-0228,"Panitia sigap bgt pas ada laporan cheat dari peserta, langsung ditindak.",twitter,2026-06-15T12:02:00Z,19,11,true,5995
+P-0229,"Streaming-nya jernih banget kok, buffering tiap 5 menit doang, lancar jaya. pas semifinal",twitter,2026-06-18T17:15:00Z,91,9,true,3917
+P-0230,"Proses verifikasi akun peserta ribet banget, dokumen udah lengkap tapi masih ditolak.",instagram,2026-06-19T08:15:00Z,46,30,false,1530
+P-0231,"Koordinasi antara caster dan analis pas review match enak diikuti, gak membosankan....",twitter,2026-06-18T14:17:00Z,57,0,false,2310
+P-0232,"Overall pengalaman ikut turnamen ini positif, salut buat panitia. pas fase grup",discord,2026-06-17T10:04:00Z,10,3,true,1038
+P-0233,"Highlight clip dari tiap match selalu di-upload cepat, enak buat nostalgia momen seru. 🔥",instagram,2026-06-20T07:06:00Z,43,1,true,1711
+P-0234,"Biasa aja sih minggu ini, gak ada yang spesial tapi juga gak mengecewakan.",twitter,2026-06-18T12:22:00Z,25,2,false,4071
+P-0235,Prize pool untuk juara 4 sampai 8 itu dibagi rata apa beda-beda? tim gw woy,discord,2026-06-21T16:00:00Z,27,10,true,1190
+P-0236,Kapan pengumuman bracket fase knockout keluar ya min?,twitter,2026-06-19T13:37:00Z,17,2,true,5331
+P-0237,"War tiket kali ini lebih tertib, sistem antrian onlinenya membantu banget.",twitter,2026-06-21T08:13:00Z,3,9,true,1629
+P-0238,"Match day kemarin seru banget, panitia on point ngatur jadwalnya.",twitter,2026-06-19T11:03:00Z,13,8,true,3796
+P-0239,"MC-nya profesional bgt, salah nama tim 5 kali dalam satu segmen, mantap. pas fase grup...",telegram,2026-06-21T18:17:00Z,46,3,true,685
+P-0240,Match hari ini tayang jam berapa ya di jadwal terbaru?,twitter,2026-06-18T17:09:00Z,4,9,true,5391
+P-0241,"Casting & host-nya lucu-lucu tapi tetep informatif, betah nonton sampe akhir. 🔥",twitter,2026-06-21T11:53:00Z,32,9,true,6074
+P-0242,"Biasa aja sih minggu ini, gak ada yang spesial tapi juga gak mengecewakan.",twitter,2026-06-16T18:02:00Z,14,3,true,3019
+P-0243,"Random question, ada yang punya rekomendasi setting sensitivity buat mobile gak.",discord,2026-06-15T23:01:00Z,54,10,false,1123
+P-0244,"Komunitasnya solid banget, saling support walau beda tim jagoan. squad kita",instagram,2026-06-15T12:29:00Z,2,1,true,1631
+P-0245,Ada rencana bikin divisi khusus buat pemain casual gak min? di server utama,telegram,2026-06-18T10:43:00Z,7,5,true,756
+P-0246,"Streaming-nya jernih banget kali ini, kamera angle-nya juga enak ditonton.",twitter,2026-06-20T12:39:00Z,21,6,false,4368
+P-0247,Ada yang tau format match-nya BO1 apa BO3 buat semifinal?,instagram,2026-06-17T20:41:00Z,16,11,true,2556
+P-0248,"Casting-nya lucu dan enak didengerin, tapi kualitas streaming-nya perlu ditingkatin lagi. squad kita",twitter,2026-06-18T21:08:00Z,17,4,true,7774
+P-0249,"Match day berjalan lancar, gak ada kendala teknis berarti minggu ini. pas fase grup woy",twitter,2026-06-21T07:36:00Z,6,4,true,4038
+P-0250,Boleh tau kontak admin buat urusan sponsorship gak? 🔥,discord,2026-06-18T20:04:00Z,46,8,true,284
+P-0251,"Bracket update-nya real-time, jadi gampang mantau tim jagoan sendiri. squad kita",telegram,2026-06-16T10:36:00Z,36,0,true,847
+P-0252,Hadiah juara 3 belum dikirim padahal turnamen udah selesai 2 bulan lalu. di server utama,discord,2026-06-17T17:11:00Z,78,28,true,986
+P-0253,"Slot war tiket kali ini adil, gak keburu diborong bot kayak dulu. pas fase grup",telegram,2026-06-26T15:23:00Z,6,12,true,854
+P-0254,"Streaming-nya putus-putus terus pas partai final, kecewa bgt nontonnya.",telegram,2026-06-23T23:18:00Z,62,4,true,178
+P-0255,Ada rencana bikin divisi khusus buat pemain casual gak min? woy,instagram,2026-06-25T22:46:00Z,8,5,true,1499
+P-0256,"Biaya pendaftaran naik terus tiap season, agak berat buat tim kecil. woy",discord,2026-06-27T21:48:00Z,15,21,true,1149
+P-0257,"Bracket adil kok menurut gw, cuma jadwalnya suka mundur-mundur tanpa pemberitahuan jelas. woy",discord,2026-06-26T07:44:00Z,7,12,false,688
+P-0258,Match hari ini tayang jam berapa ya di jadwal terbaru? di server utama sih,instagram,2026-06-27T07:51:00Z,26,11,true,2756
+P-0259,"Prize pool dan hadiah turnamen makin menarik tiap season, keep it up! squad kita",telegram,2026-06-24T16:44:00Z,57,10,true,509
+P-0260,First!! ya,telegram,2026-06-26T13:38:00Z,8,8,true,741
+P-0261,Btw lagu opening turnamennya enak banget judulnya apa ya.,twitter,2026-06-27T09:10:00Z,59,0,true,3379
+P-0262,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya.",twitter,2026-06-23T08:28:00Z,81,5,true,6030
+P-0263,Kapan biasanya hasil technical meeting diumumin ke publik? min,twitter,2026-06-24T15:06:00Z,17,0,true,7229
+P-0264,Boleh tau kontak admin buat urusan sponsorship gak?,telegram,2026-06-23T23:36:00Z,6,1,true,626
+P-0265,"Nexus Cube emang beda kelasnya, turnamen paling niat taun ini!",twitter,2026-06-26T08:46:00Z,23,12,true,7245
+P-0266,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya. @admin",telegram,2026-06-27T22:12:00Z,28,3,true,741
+P-0267,"Highlight clip dari tiap match selalu di-upload cepat, enak buat nostalgia momen seru. @admin",twitter,2026-06-26T19:29:00Z,39,3,true,1715
+P-0268,"Wah keren banget ya servernya, lag pas final doang, biasa aja itu mah. (match kemarin)",telegram,2026-06-22T08:38:00Z,42,26,true,271
+P-0269,"Kualitas mic komentator jelek bgt, suaranya pecah terus sepanjang siaran.",discord,2026-06-22T20:16:00Z,45,16,true,832
+P-0270,"Sistem anti-cheat-nya canggih banget tuh, cheater dibiarin main terus, hebat.",discord,2026-06-22T22:46:00Z,68,2,true,289
+P-0271,"Venue parkirannya penuh dan gak ada pengaturan, jadi macet parah di luar.",discord,2026-06-26T11:59:00Z,68,28,true,340
+P-0272,"Venue kece, sound system oke, tapi antrian masuknya berantakan banget gak ada yg atur. di server utama",discord,2026-06-26T17:34:00Z,33,9,true,1054
+P-0273,"Kualitas mic komentator jelek banget, suaranya pecah terus sepanjang siaran. squad kita",discord,2026-06-26T12:16:00Z,28,21,true,937
+P-0274,"Prize pool-nya emang gede, cuma sayang server-nya masih suka lag pas match penting. woy",discord,2026-06-25T15:47:00Z,9,9,true,756
+P-0275,"Kecewa sama koneksi server, ini turnamen kedua kalinya kejadian lag pas final. 😅",twitter,2026-06-24T11:16:00Z,87,2,true,6309
+P-0276,"Titip promo dikit, warung aku buka giveaway topup ya, cek bio.",discord,2026-06-27T17:32:00Z,41,0,false,791
+P-0277,"Bracket update-nya real-time, jadi gampang mantau tim jagoan sendiri. squad kita min",twitter,2026-06-22T16:21:00Z,20,11,true,5347
+P-0278,"Refund tiket yang dibatalin sampe sekarang belum cair, udah sebulan lebih. woy",twitter,2026-06-26T13:28:00Z,42,21,true,5684
+P-0279,Panitia kurang komunikasi soal perubahan format match H-1 sebelum hari-H. ya,discord,2026-06-24T13:19:00Z,69,8,true,724
+P-0280,Ada yg tau format match-nya BO1 apa BO3 buat semifinal?,discord,2026-06-25T10:03:00Z,17,9,true,685
+P-0281,"Venue-nya keren, setup panggung sama lighting-nya bikin suasana makin hype. 🙏",discord,2026-06-26T17:41:00Z,23,6,true,1098
+P-0282,Follow ig aku dong buat giveaway skin ML gratis @random_acc123 di server utama @admin,telegram,2026-06-26T22:41:00Z,42,1,true,337
+P-0283,"Sistem anti-cheat-nya canggih bgt tuh, cheater dibiarin main terus, hebat.",telegram,2026-06-22T15:09:00Z,93,3,true,528
+P-0284,"Bracket-nya jelas dan gampang dipahami, rules juga fair buat semua tim. (match kemarin) deh",instagram,2026-06-23T14:18:00Z,6,4,true,3998
+P-0285,"Biasa aja sih minggu ini, gak ada yg spesial tapi juga gak mengecewakan. squad kita",instagram,2026-06-27T20:33:00Z,53,11,false,3012
+P-0286,"Biasa aja sih minggu ini, gak ada yang spesial tapi juga gak mengecewakan. 🙏",telegram,2026-06-24T14:22:00Z,3,12,true,150
+P-0287,"Interaksi admin di grup official ramah dan informatif, betah nanya-nanya. pas semifinal",instagram,2026-06-26T20:44:00Z,44,11,true,2275
+P-0288,"Bagus banget nih refund-nya, cuma nunggu sebulan doang, cepet kan ya. (match kemarin)",twitter,2026-06-22T12:32:00Z,90,20,true,7753
+P-0289,"Venue-nya kepanasan bgt, AC-nya kayak gak nyala, ganggu konsentrasi main.",twitter,2026-06-29T23:09:00Z,23,29,true,4193
+P-0290,"Streaming quality turun drastis begitu penonton makin rame, servernya kurang kuat kayaknya. pas semifinal",twitter,2026-06-30T08:42:00Z,20,23,true,7555
+P-0291,"Refund tiket yang dibatalin sampe sekarang belum cair, udah sebulan lebih. sih",instagram,2026-07-05T17:05:00Z,18,11,true,2907
+P-0292,"Overlay statistik pas live sering salah, bikin bingung yang lagi nonton.",twitter,2026-06-30T21:18:00Z,30,8,true,5085
+P-0293,"War tiket td error mulu pas checkout, keburu abis pas server-nya baru normal. (match kemarin)",instagram,2026-07-04T22:33:00Z,99,10,true,1648
+P-0294,"Venue-nya kepanasan banget, AC-nya kayak gak nyala, ganggu konsentrasi main.",instagram,2026-07-03T07:41:00Z,73,2,true,2805
+P-0295,"Top markotop jadwalnya, delay 2 jam tanpa kabar, panitia emang totalitas. 😅",discord,2026-07-05T13:52:00Z,96,21,true,972
+P-0296,Hadiah juara 3 belum dikirim padahal turnamen udah selesai 2 bulan lalu. @admin,discord,2026-07-05T08:32:00Z,24,19,true,940
+P-0297,"Link streaming cadangan gak disediain pas server utama down, penonton pada kebingungan. sih",instagram,2026-07-05T08:15:00Z,83,26,true,2538
+P-0298,Prize pool untuk juara 4 sampai 8 itu dibagi rata apa beda-beda?,telegram,2026-06-29T15:50:00Z,43,12,true,208
+P-0299,Boleh minta link rules lengkap versi PDF gak buat dibaca offline? 😭,telegram,2026-07-05T15:00:00Z,8,8,true,750
+P-0300,"Venue-nya kepanasan banget, AC-nya kayak gak nyala, ganggu konsentrasi main.",twitter,2026-07-03T17:54:00Z,17,2,true,4198
+P-0301,"Venue-nya kepanasan banget, AC-nya kayak gak nyala, ganggu konsentrasi main. squad kita @admin",telegram,2026-07-04T08:36:00Z,80,3,true,607
+P-0302,"Server match kemarin lag parah pas grand final, bikin momen penting jadi kacau. 😭",discord,2026-07-04T15:25:00Z,41,22,true,651
+P-0303,"Bracket adil kok menurut gw, cuma jadwalnya suka mundur-mundur tanpa pemberitahuan jelas. 😭",instagram,2026-07-02T16:40:00Z,44,1,true,1042
+P-0304,"Delay pertandingan udah 2 jam tanpa info jelas, gimana sih panitianya. squad kita",twitter,2026-06-29T18:20:00Z,56,21,true,4577
+P-0305,"Sistem anti-cheat-nya canggih banget tuh, cheater dibiarin main terus, hebat. 🔥",discord,2026-07-03T18:42:00Z,89,10,false,491
+P-0306,"Proses verifikasi akun peserta ribet banget, dokumen udah lengkap tapi masih ditolak. pas fase grup",discord,2026-07-01T07:05:00Z,63,29,true,443
+P-0307,"Biaya pendaftaran naik terus tiap season, agak berat buat tim kecil.",instagram,2026-07-01T20:30:00Z,35,20,true,3126
+P-0308,"Streaming-nya jernih bgt kok, buffering tiap 5 menit doang, lancar jaya. pas fase grup 🔥",telegram,2026-06-30T16:37:00Z,33,19,true,524
+P-0309,Ada rencana bikin divisi khusus buat pemain casual gak min? squad kita woy,twitter,2026-07-02T14:19:00Z,37,4,true,4722
+P-0310,"Admin lambat respon banget soal komplain pembayaran, udah 3 hari gak dibales. pas semifinal @admin",twitter,2026-07-03T12:28:00Z,87,20,true,7928
+P-0311,"Prize pool yang dijanjiin di poster beda sama yang diumumin pas final, kok bisa?",discord,2026-07-05T19:04:00Z,32,23,true,693
+P-0312,"Info jadwal sering telat di-update, jadi banyak yang bingung match kapan mulai. ya",discord,2026-06-30T12:37:00Z,71,20,false,703
+P-0313,"Overlay statistik pas live sering salah, bikin bingung yang lagi nonton. squad kita",telegram,2026-07-04T20:44:00Z,73,16,true,340
+P-0314,"Match day kemarin seru banget, panitia on point ngatur jadwalnya. 😭",telegram,2026-06-30T22:37:00Z,5,7,true,888
+P-0315,Nonton dari mana ya kalau streaming utamanya penuh?,instagram,2026-07-03T19:36:00Z,24,3,true,1752
+P-0316,"Info jadwal sering telat di-update, jadi banyak yang bingung match kapan mulai. squad kita...",instagram,2026-06-29T10:21:00Z,44,27,true,1678
+P-0317,"Prize pool yg dijanjiin di poster beda sama yg diumumin pas final, kok bisa? sih",twitter,2026-07-03T14:30:00Z,80,18,true,5300
+P-0318,"Respon admin gercep banget ya, cuma 4 hari baru dibales, keren emang. woy",instagram,2026-06-29T08:46:00Z,97,21,true,1789
+P-0319,"Admin lambat respon banget soal komplain pembayaran, udah 3 hari gak dibales. tim gw ya",telegram,2026-07-05T17:38:00Z,61,6,true,729
+P-0320,"Link streaming cadangan gak disediain pas server utama down, penonton pada kebingungan. woy",telegram,2026-06-30T15:18:00Z,57,15,true,411
+P-0321,"Kecewa sama koneksi server, ini turnamen kedua kalinya kejadian lag pas final.",twitter,2026-07-02T18:37:00Z,43,21,true,5096
+P-0322,"Bracket adil kok menurut gw, cuma jadwalnya suka mundur-mundur tanpa pemberitahuan jelas.",telegram,2026-06-30T20:52:00Z,13,7,true,411
+P-0323,"Prize pool-nya jujur bener nih, beda sama poster doang, transparan banget.",instagram,2026-06-29T12:28:00Z,99,23,true,3550
+P-0324,"Suka sama konsep turnamennya, sayang komunikasi soal aturan masih simpang siur. pas semifinal 😭",discord,2026-07-01T20:48:00Z,52,10,false,479
+P-0325,Boleh tau kontak admin buat urusan sponsorship gak? deh,telegram,2026-07-07T09:43:00Z,11,6,true,538
+P-0326,"Streaming-nya jernih banget kok, buffering tiap 5 menit doang, lancar jaya.",twitter,2026-07-10T23:07:00Z,28,11,true,3642
+P-0327,Jadwal rilis di awal season bikin gampang atur waktu buat nonton semua match.,discord,2026-07-09T18:44:00Z,56,1,false,241
+P-0328,"Prize pool dan hadiah turnamen makin menarik tiap season, keep it up!",instagram,2026-07-08T10:11:00Z,57,7,true,3990
+P-0329,"Panitia ramah banget sih orangnya, tapi sistem war tiket-nya masih perlu banyak perbaikan. sih",discord,2026-07-11T07:26:00Z,7,10,true,345
+P-0330,"Tiket nonton offline war-nya susah banget, keburu abis dalam hitungan menit. (match kemarin)",discord,2026-07-11T07:57:00Z,17,18,true,1175
+P-0331,"Sistem tie-break di fase grup gak jelas, bikin protes dari beberapa tim.",instagram,2026-07-09T16:47:00Z,30,7,true,1052
+P-0332,Sistem laporan bug di form online-nya cepat direspon tim teknis.,twitter,2026-07-08T13:44:00Z,3,2,true,4234
+P-0333,"Format pertandingannya seru, tapi proses refund kalau ada pembatalan agak lambat. pas fase grup",telegram,2026-07-07T21:03:00Z,36,3,true,763
+P-0334,"Venue-nya keren, setup panggung sama lighting-nya bikin suasana makin hype. deh",instagram,2026-07-12T22:14:00Z,58,8,true,2396
+P-0335,"Prize pool dan hadiah turnamen makin menarik tiap season, keep it up!",telegram,2026-07-12T09:14:00Z,37,0,false,666
+P-0336,"Mohon info dong kalau ada turnamen Free Fire selanjutnya, pengen ikut lagi. tim gw",discord,2026-07-12T21:36:00Z,49,6,true,336
+P-0337,"Casting-nya lucu dan enak didengerin, tapi kualitas streaming-nya perlu ditingkatin lagi. squad kita...",telegram,2026-07-06T18:05:00Z,25,9,false,528
+P-0338,"Komunitasnya solid banget, saling support walau beda tim jagoan. pas fase grup",discord,2026-07-12T11:11:00Z,18,12,false,649
+P-0339,"Kualitas produksi turnamen ini naik drastis dibanding season lalu, apresiasi tim produksinya. di server utama...",telegram,2026-07-10T20:07:00Z,5,1,true,603
+P-0340,"GG buat panitia, semua match on time gak ada delay sama sekali.",discord,2026-07-09T12:47:00Z,51,2,true,670
+P-0341,"Kapan war tiket season depan dibuka, biar bisa siap-siap dari sekarang.",discord,2026-07-10T20:41:00Z,7,12,true,341
+P-0342,"Bracket-nya jelas dan gampang dipahami, rules juga fair buat semua tim.",discord,2026-07-06T15:58:00Z,18,0,true,360
+P-0343,"Venue-nya keren, setup panggung sama lighting-nya bikin suasana makin hype. (match kemarin)",discord,2026-07-10T09:31:00Z,50,10,true,482
+P-0344,Jadwal rilis di awal season bikin gampang atur waktu buat nonton semua match. woy,discord,2026-07-10T09:36:00Z,37,2,true,538
+P-0345,First!! 😅,telegram,2026-07-10T22:32:00Z,50,11,true,472
+P-0346,"Standar aja pengalamannya, sesuai ekspektasi lah. squad kita ya",instagram,2026-07-07T10:18:00Z,32,0,true,1221
+P-0347,"Suka sama konsep turnamennya, sayang komunikasi soal aturan masih simpang siur. 🔥",telegram,2026-07-12T09:56:00Z,11,7,true,794
+P-0348,"Komunitasnya asik banget, tapi moderasi di grup official kadang kurang tegas. pas fase grup",telegram,2026-07-10T22:33:00Z,28,9,true,568
+P-0349,Prize pool untuk juara 4 sampai 8 itu dibagi rata apa beda-beda?,telegram,2026-07-11T14:06:00Z,26,11,true,299
+P-0350,"Biasa aja sih minggu ini, gak ada yg spesial tapi juga gak mengecewakan. pas semifinal",twitter,2026-07-09T20:29:00Z,20,4,false,2661
+P-0351,Kapan biasanya hasil technical meeting diumumin ke publik? sih,instagram,2026-07-12T17:14:00Z,3,7,false,1556
+P-0352,"GG buat panitia, semua match on time gak ada delay sama sekali.",discord,2026-07-07T20:41:00Z,18,11,false,907
+P-0353,"Merchandise official-nya keren, desainnya related banget sama tema turnamen taun ini. pas semifinal",discord,2026-07-07T12:34:00Z,46,6,true,570
+P-0354,Nonton dari mana ya kalau streaming utamanya penuh?,twitter,2026-07-06T16:11:00Z,32,3,true,7649
+P-0355,"Refund tiket yg dibatalin sampe sekarang belum cair, udah sebulan lebih. squad kita",twitter,2026-07-07T20:37:00Z,74,3,true,1828
+P-0356,"Ada bug di sistem skor pas fase grup, parah banget ganggu penilaian. pas semifinal @admin",instagram,2026-07-08T10:46:00Z,99,21,true,2934
+P-0357,Match hari ini tayang jam berapa ya di jadwal terbaru? pas fase grup,twitter,2026-07-08T12:11:00Z,54,1,true,5547
+P-0358,"Prize pool nya gede banget taun ini, makin semangat push rank buat kualifikasi.",twitter,2026-07-06T13:56:00Z,53,6,true,4708
+P-0359,"Venue kece, sound system oke, tapi antrian masuknya berantakan bgt gak ada yang atur. di server utama",twitter,2026-07-08T09:33:00Z,2,0,true,4932
+P-0360,"Venue-nya keren, setup panggung sama lighting-nya bikin suasana makin hype.",instagram,2026-07-09T19:40:00Z,23,12,true,1145

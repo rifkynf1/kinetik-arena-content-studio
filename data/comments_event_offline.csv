@@ -1,11 +1,121 @@
 post_id,comment_text,channel,timestamp,likes,shares,brand_mentioned,follower_count
-P-E001,"Venue offline kemarin sempit banget, sumpek pas nonton match exhibition-nya.",instagram,2026-07-01T14:00:00Z,20,2,true,2100
-P-E002,"Guest star pro player-nya keren banget! Makasih Nexus Cube udah ngundang mereka.",twitter,2026-07-01T15:30:00Z,80,15,true,5400
-P-E003,"Sistem antrian tiket on the spot kacau balau, tolong diperbaiki lagi min.",discord,2026-07-01T16:10:00Z,25,3,true,850
-P-E004,"Ada info buat merchandise resminya dijual online nggak? Kemarin kehabisan.",telegram,2026-07-02T09:20:00Z,6,0,true,310
-P-E005,"Lighting panggung sama sound system-nya juara! Vibe turnamennya dapet banget.",instagram,2026-07-02T18:00:00Z,55,8,true,2100
-P-E006,"Booth makanan di lokasi kurang banyak, antriannya panjang bener.",twitter,2026-07-02T19:15:00Z,40,5,true,5400
-P-E007,"Seru banget bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya!",discord,2026-07-03T10:00:00Z,30,4,true,850
-P-E008,"Kecewa acara meet & greet dipotong waktunya, padahal udah nunggu lama.",telegram,2026-07-03T11:45:00Z,18,2,true,310
-P-E009,"Sumpah acara cosplay di sela-sela exhibition match itu menghibur banget.",instagram,2026-07-03T20:00:00Z,48,6,true,2100
-P-E010,"Min, besok-besok sewa gedung yang lebih gede dong, parkirannya susah.",twitter,2026-07-04T08:30:00Z,22,3,true,5400
+P-E0001,"Venue offline kemarin sempit banget, sumpek pas nonton match exhibition-nya.",discord,2026-07-03T12:12:00Z,77,11,true,1083
+P-E0002,"Sesi meet & greet-nya terorganisir rapi, gak ada dorong-dorongan sama sekali.",telegram,2026-07-06T18:49:00Z,27,0,true,356
+P-E0003,"Booth makanan di lokasi kurang banyak, antriannya panjang bener. (match kemarin) woy",instagram,2026-07-05T14:39:00Z,58,22,true,2186
+P-E0004,"Seru banget bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya! tim gw",twitter,2026-07-06T20:18:00Z,22,0,true,6540
+P-E0005,"Sistem check-in QR code-nya cepet, gak perlu antre lama buat masuk venue. woy",twitter,2026-07-01T22:54:00Z,30,4,true,2325
+P-E0006,"Min, besok-besok sewa gedung yang lebih gede dong, parkirannya susah.",instagram,2026-07-01T18:32:00Z,77,30,false,2697
+P-E0007,Live music pengisi acara sebelum grand final bikin suasana makin meriah. (match kemarin),telegram,2026-07-06T22:37:00Z,37,6,true,511
+P-E0008,"Fanmeet sama pemain official-nya berkesan banget, mereka ramah semua.",telegram,2026-07-01T08:23:00Z,59,2,true,503
+P-E0009,Games interaktif buat penonton di sela jeda match seru dan hadiahnya lumayan.,twitter,2026-07-07T15:24:00Z,58,10,true,2322
+P-E0010,Kapan buka lowongan volunteer buat event offline berikutnya? squad kita...,instagram,2026-07-01T21:06:00Z,41,7,false,2207
+P-E0011,Ada info buat merchandise resminya dijual online nggak? Kemarin kehabisan.,telegram,2026-07-03T10:32:00Z,3,0,false,561
+P-E0012,"Seru banget bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya! ya",twitter,2026-07-05T17:50:00Z,56,7,false,3046
+P-E0013,"Kecewa acara meet & greet dipotong waktunya, padahal udah nunggu lama. sih",discord,2026-07-05T19:33:00Z,34,14,true,1049
+P-E0014,Random tapi siapa yg kemarin foto bareng cosplayer di booth A? squad kita,instagram,2026-07-05T15:44:00Z,46,7,true,3472
+P-E0015,Boleh tau venue selanjutnya di kota mana ya min? 😭,twitter,2026-07-05T19:03:00Z,12,4,true,6222
+P-E0016,Ada area khusus buat komunitas/fanbase daftar booth gak min? sih,telegram,2026-07-02T21:26:00Z,60,10,true,712
+P-E0017,"Seru bgt bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya!",twitter,2026-07-03T09:22:00Z,59,9,true,5121
+P-E0018,Rute transportasi umum paling gampang ke venue lewat mana ya? 😭,discord,2026-07-05T21:54:00Z,52,9,true,835
+P-E0019,Ada info buat merchandise resminya dijual online nggak? Kemarin kehabisan.,instagram,2026-07-01T16:31:00Z,46,8,true,1960
+P-E0020,"Booth makanan enak-enak, tapi antriannya bikin capek nunggu lama banget. sih",twitter,2026-07-05T18:38:00Z,4,1,true,7005
+P-E0021,"Konsumsi gratis buat peserta lomba cukup dan rasanya enak, apresiasi panitia.",discord,2026-07-06T08:01:00Z,52,10,true,1130
+P-E0022,"Sound system oke pas awal, tapi pecah pas momen final, sayang banget.",twitter,2026-07-02T22:06:00Z,43,5,false,6859
+P-E0023,"Seru banget bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya! sih",instagram,2026-07-07T20:10:00Z,59,7,true,1806
+P-E0024,Boleh bawa kamera profesional sendiri gak buat dokumentasi pribadi?,twitter,2026-07-03T21:21:00Z,10,9,true,6362
+P-E0025,"MC dan host acaranya interaktif banget, penonton jadi ikut hype terus. di server utama",discord,2026-07-01T19:15:00Z,27,5,true,820
+P-E0026,"Konsumsi gratis buat peserta lomba cukup dan rasanya enak, apresiasi panitia....",instagram,2026-07-06T15:21:00Z,12,1,true,2825
+P-E0027,Lighting panggung sama sound system-nya juara! Vibe turnamennya dapet banget. squad kita,telegram,2026-07-04T19:18:00Z,49,10,true,410
+P-E0028,Lighting panggung sama sound system-nya juara! Vibe turnamennya dapet banget.,discord,2026-07-02T14:58:00Z,31,5,false,351
+P-E0029,Guest star pro player-nya keren banget! Makasih Nexus Cube udah ngundang mereka. deh,instagram,2026-07-05T08:08:00Z,15,0,true,3855
+P-E0030,Dresscode buat penonton yg mau masuk venue ada aturan khusus gak? deh,discord,2026-07-01T10:24:00Z,10,1,true,398
+P-E0031,"Tempat duduk VIP yang dijanjiin ternyata sama aja sama reguler, kecewa berat. pas semifinal 🔥",instagram,2026-07-08T20:07:00Z,81,17,true,1267
+P-E0032,Dresscode buat penonton yang mau masuk venue ada aturan khusus gak?,instagram,2026-07-09T18:48:00Z,15,6,true,2654
+P-E0033,"Signal internet di venue jelek banget, susah upload story pas lagi seru-serunya.",twitter,2026-07-09T19:34:00Z,18,19,true,2382
+P-E0034,Boleh tau venue selanjutnya di kota mana ya min?,telegram,2026-07-14T18:26:00Z,4,12,true,219
+P-E0035,"AC di venue mati beberapa kali pas lagi penuh-penuhnya, gerah parah.",discord,2026-07-11T22:03:00Z,80,22,true,1134
+P-E0036,"Sound system-nya pecah di beberapa segmen, ganggu bgt pas momen penting.",twitter,2026-07-09T17:33:00Z,17,24,true,4732
+P-E0037,Ada area khusus buat komunitas/fanbase daftar booth gak min?,discord,2026-07-13T23:59:00Z,47,11,true,635
+P-E0038,"Booth makanan di lokasi kurang banyak, antriannya panjang bener. di server utama",telegram,2026-07-12T13:00:00Z,29,23,false,740
+P-E0039,"Signal internet di venue jelek banget, susah upload story pas lagi seru-serunya. 🙏",discord,2026-07-10T21:58:00Z,71,4,true,908
+P-E0040,"Guest star-nya keren, cuma sesi meet & greet-nya kepotong jadi kurang puas.",discord,2026-07-08T08:03:00Z,9,3,true,702
+P-E0041,"Mantap AC-nya, mati pas lagi penuh doang, sejuk banget emang. tim gw",instagram,2026-07-13T21:52:00Z,38,4,true,1976
+P-E0042,"Merchandise cepet abis padahal baru buka setengah jam, banyak yang kecewa. (match kemarin)...",discord,2026-07-10T20:36:00Z,46,14,true,551
+P-E0043,"Bagus tuh sistem antrian tiketnya, kacau balau doang, tertib banget.",discord,2026-07-12T10:01:00Z,74,3,true,952
+P-E0044,"Mantap AC-nya, mati pas lagi penuh doang, sejuk banget emang. sih",discord,2026-07-14T09:48:00Z,98,13,true,1101
+P-E0045,"Konsep acaranya bagus, tapi koordinasi panitia lapangan masih berantakan.",discord,2026-07-10T09:26:00Z,2,7,true,338
+P-E0046,"Toilet umum di venue kotor dan antre panjang, tolong ditambah fasilitasnya. tim gw 🙏",discord,2026-07-13T19:47:00Z,53,4,true,591
+P-E0047,"Venue-nya kece dan dekorasinya niat, sayang antriannya berantakan banget. min",twitter,2026-07-14T23:22:00Z,13,5,true,3801
+P-E0048,Petugas keamanan kurang responsif pas ada penonton yg dorong-dorongan. 🔥,telegram,2026-07-10T17:37:00Z,37,9,true,476
+P-E0049,"Top parkirannya, susah muter doang, strategis bgt lokasinya. min",telegram,2026-07-08T13:17:00Z,53,8,true,559
+P-E0050,"Booth makanan enak-enak, tapi antriannya bikin capek nunggu lama bgt.",discord,2026-07-11T13:11:00Z,30,2,true,910
+P-E0051,"Tempat duduk VIP yang dijanjiin ternyata sama aja sama reguler, kecewa berat. (match kemarin)",telegram,2026-07-08T13:14:00Z,30,26,true,784
+P-E0052,"Kecewa acara meet & greet dipotong waktunya, padahal udah nunggu lama.",discord,2026-07-11T22:07:00Z,53,8,true,256
+P-E0053,"Sound system-nya pecah di beberapa segmen, ganggu banget pas momen penting. di server utama",telegram,2026-07-09T19:25:00Z,99,23,true,257
+P-E0054,"Mantap AC-nya, mati pas lagi penuh doang, sejuk bgt emang.",instagram,2026-07-12T20:42:00Z,96,23,true,3252
+P-E0055,"Hebat merchandise-nya, abis 30 menit doang, stoknya melimpah ya.",instagram,2026-07-14T16:22:00Z,91,30,true,3621
+P-E0056,"Toilet umum di venue kotor dan antre panjang, tolong ditambah fasilitasnya. deh",instagram,2026-07-10T17:31:00Z,30,17,true,1930
+P-E0057,"AC di venue mati beberapa kali pas lagi penuh-penuhnya, gerah parah.",telegram,2026-07-13T07:44:00Z,48,17,true,189
+P-E0058,Ada sesi tanya jawab sama pro player gak biasanya di acara kayak gini? squad kita,twitter,2026-07-13T22:17:00Z,19,6,true,3305
+P-E0059,"Tempat duduk VIP yg dijanjiin ternyata sama aja sama reguler, kecewa berat. pas fase grup",instagram,2026-07-10T20:49:00Z,49,15,true,1281
+P-E0060,Ada area khusus buat komunitas/fanbase daftar booth gak min? deh,discord,2026-07-09T07:15:00Z,38,3,false,299
+P-E0061,Ada area khusus buat komunitas/fanbase daftar booth gak min? @admin,twitter,2026-07-21T07:24:00Z,33,9,true,5022
+P-E0062,Rute transportasi umum paling gampang ke venue lewat mana ya? 😅,discord,2026-07-18T18:49:00Z,24,11,true,677
+P-E0063,Ada info buat merchandise resminya dijual online nggak? Kemarin kehabisan. 😭,instagram,2026-07-18T23:36:00Z,57,3,true,3909
+P-E0064,"Venue-nya kece dan dekorasinya niat, sayang antriannya berantakan banget. pas fase grup sih",instagram,2026-07-21T08:27:00Z,28,11,true,3276
+P-E0065,"Seru banget bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya! woy",instagram,2026-07-21T14:55:00Z,57,3,false,3570
+P-E0066,Boleh bawa kamera profesional sendiri gak buat dokumentasi pribadi? di server utama,twitter,2026-07-19T20:45:00Z,14,5,true,4802
+P-E0067,"Top parkirannya, susah muter doang, strategis banget lokasinya....",instagram,2026-07-19T17:25:00Z,30,19,true,2954
+P-E0068,"Booth merchandise-nya lengkap dan harganya masuk akal, langsung borong. pas semifinal",twitter,2026-07-17T19:05:00Z,11,4,true,2817
+P-E0069,"Titip promo, buka jasa edit video highlight event, cek bio ya. di server utama",instagram,2026-07-16T21:47:00Z,60,1,true,1808
+P-E0070,Kira-kira acara kayak gini bakal ada lagi taun depan gak ya? (match kemarin),instagram,2026-07-19T18:10:00Z,12,11,false,1361
+P-E0071,Lighting panggung sama sound system-nya juara! Vibe turnamennya dapet banget. 😅,instagram,2026-07-16T09:47:00Z,19,1,false,1162
+P-E0072,"Sesi meet & greet-nya terorganisir rapi, gak ada dorong-dorongan sama sekali. 😭",telegram,2026-07-21T16:48:00Z,49,7,true,594
+P-E0073,Guest star pro player-nya keren banget! Makasih Nexus Cube udah ngundang mereka.,telegram,2026-07-20T23:34:00Z,34,10,false,700
+P-E0074,"Panitia lapangan kurang koordinasi, penonton diarahkan bolak-balik gak jelas. squad kita deh",instagram,2026-07-18T09:35:00Z,67,23,false,1759
+P-E0075,"Standar aja sih acaranya, sesuai ekspektasi.",telegram,2026-07-19T16:56:00Z,31,9,true,663
+P-E0076,Petugas keamanan kurang responsif pas ada penonton yang dorong-dorongan.,twitter,2026-07-19T12:33:00Z,98,21,true,4543
+P-E0077,Ada info buat merchandise resminya dijual online nggak? Kemarin kehabisan. ya,twitter,2026-07-21T21:03:00Z,9,2,true,4754
+P-E0078,"Panitia lapangan kurang koordinasi, penonton diarahkan bolak-balik gak jelas.",instagram,2026-07-15T09:50:00Z,71,13,true,3228
+P-E0079,Sumpah acara cosplay di sela-sela exhibition match itu menghibur banget.,twitter,2026-07-20T08:39:00Z,24,2,true,5267
+P-E0080,"Panitia lapangan kurang koordinasi, penonton diarahkan bolak-balik gak jelas.",twitter,2026-07-19T18:22:00Z,44,21,true,2951
+P-E0081,"Top parkirannya, susah muter doang, strategis banget lokasinya. pas semifinal",telegram,2026-07-20T17:36:00Z,81,5,true,626
+P-E0082,"Keren acara meet & greet-nya, dipotong waktu doang, on time banget.",telegram,2026-07-18T18:59:00Z,52,14,true,356
+P-E0083,"Sistem antrian tiket on the spot kacau balau, tolong diperbaiki lagi min. tim gw",instagram,2026-07-20T16:48:00Z,26,21,true,2127
+P-E0084,Random tapi siapa yang kemarin foto bareng cosplayer di booth A? (match kemarin) min,telegram,2026-07-17T07:04:00Z,55,5,true,387
+P-E0085,"Dekorasi venue-nya niat banget, banyak spot foto kece buat konten.",discord,2026-07-18T18:05:00Z,9,5,true,818
+P-E0086,"Sesi meet & greet-nya terorganisir rapi, gak ada dorong-dorongan sama sekali. ya",instagram,2026-07-19T09:02:00Z,9,6,true,1988
+P-E0087,"Follow ig aku buat dokumentasi event kemarin, banyak foto keren! 🔥",instagram,2026-07-18T09:52:00Z,29,5,true,2388
+P-E0088,Ada area khusus buat komunitas/fanbase daftar booth gak min?,instagram,2026-07-19T23:23:00Z,31,1,true,2535
+P-E0089,"MC dan host acaranya interaktif bgt, penonton jadi ikut hype terus.",twitter,2026-07-16T20:11:00Z,9,4,true,3252
+P-E0090,Guest star pro player-nya keren banget! Makasih Nexus Cube udah ngundang mereka. 🔥,telegram,2026-07-18T20:31:00Z,4,6,true,802
+P-E0091,"MC dan host acaranya interaktif bgt, penonton jadi ikut hype terus.",discord,2026-07-28T10:38:00Z,47,5,true,327
+P-E0092,Ada area khusus buat komunitas/fanbase daftar booth gak min?,discord,2026-07-23T17:48:00Z,3,12,true,673
+P-E0093,Lighting panggung sama sound system-nya juara! Vibe turnamennya dapet banget.,telegram,2026-07-22T17:27:00Z,9,10,true,195
+P-E0094,Guest star pro player-nya keren bgt! Makasih Nexus Cube udah ngundang mereka.,telegram,2026-07-24T12:11:00Z,10,10,true,212
+P-E0095,"Seru banget bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya! squad kita",twitter,2026-07-27T07:42:00Z,40,5,false,3322
+P-E0096,"Min, besok-besok sewa gedung yg lebih gede dong, parkirannya susah. 😭",twitter,2026-07-27T07:54:00Z,48,8,true,5346
+P-E0097,"Merchandise cepet abis padahal baru buka setengah jam, banyak yang kecewa. (match kemarin) 😅",telegram,2026-07-25T08:14:00Z,48,6,true,513
+P-E0098,Guest star pro player-nya keren banget! Makasih Nexus Cube udah ngundang mereka.,telegram,2026-07-24T11:35:00Z,35,9,true,284
+P-E0099,"Konsumsi gratis buat peserta lomba cukup dan rasanya enak, apresiasi panitia.",discord,2026-07-25T13:55:00Z,23,5,true,458
+P-E0100,"Dekorasi venue-nya niat bgt, banyak spot foto kece buat konten.",discord,2026-07-22T14:11:00Z,36,10,true,323
+P-E0101,"Booth makanan di lokasi kurang banyak, antriannya panjang bener.",instagram,2026-07-26T15:53:00Z,67,16,true,3629
+P-E0102,Live music pengisi acara sebelum grand final bikin suasana makin meriah. pas fase grup,telegram,2026-07-22T11:41:00Z,60,11,false,635
+P-E0103,"Venue-nya kece dan dekorasinya niat, sayang antriannya berantakan banget.",instagram,2026-07-23T18:05:00Z,60,7,false,2105
+P-E0104,Ada info buat merchandise resminya dijual online nggak? Kemarin kehabisan. pas semifinal...,twitter,2026-07-28T16:26:00Z,46,0,true,7803
+P-E0105,Kira-kira acara kayak gini bakal ada lagi taun depan gak ya? (match kemarin),twitter,2026-07-25T08:49:00Z,59,5,true,1928
+P-E0106,"Sistem check-in QR code-nya cepet, gak perlu antre lama buat masuk venue. sih",discord,2026-07-23T10:38:00Z,8,6,true,772
+P-E0107,Rute transportasi umum paling gampang ke venue lewat mana ya?,discord,2026-07-22T09:33:00Z,14,6,true,811
+P-E0108,Guest star pro player-nya keren banget! Makasih Nexus Cube udah ngundang mereka. woy,discord,2026-07-28T17:29:00Z,36,3,true,606
+P-E0109,"MC dan host acaranya interaktif banget, penonton jadi ikut hype terus. 😅",twitter,2026-07-25T22:10:00Z,9,12,true,7428
+P-E0110,Boleh bawa kamera profesional sendiri gak buat dokumentasi pribadi?,discord,2026-07-25T13:39:00Z,44,6,true,735
+P-E0111,"Panitia sigap banget pas ada penonton yang kurang enak badan, langsung dibantu ke medis.",instagram,2026-07-26T15:32:00Z,47,0,true,3007
+P-E0112,"MC dan host acaranya interaktif bgt, penonton jadi ikut hype terus. 🙏",discord,2026-07-23T17:39:00Z,46,2,true,994
+P-E0113,"Konsumsi gratis buat peserta lomba cukup dan rasanya enak, apresiasi panitia. di server utama @admin",discord,2026-07-25T09:46:00Z,33,2,true,1109
+P-E0114,"Seru banget bisa mabar langsung sama idola, next bikin acara kayak gini lagi ya!",instagram,2026-07-28T16:27:00Z,26,6,true,1494
+P-E0115,Guest star pro player-nya keren banget! Makasih Nexus Cube udah ngundang mereka.,instagram,2026-07-23T18:32:00Z,17,9,true,3505
+P-E0116,"Merchandise cepet abis padahal baru buka setengah jam, banyak yang kecewa. di server utama ya",telegram,2026-07-24T16:26:00Z,78,25,true,199
+P-E0117,"Ada yang jual jersey official second gak, budget terbatas nih.",discord,2026-07-22T20:50:00Z,34,0,true,972
+P-E0118,Kira-kira acara kayak gini bakal ada lagi taun depan gak ya?,twitter,2026-07-23T13:09:00Z,18,3,true,3581
+P-E0119,"Games interaktifnya seru, cuma hadiahnya kurang sepadan sama usaha ikutan. min",discord,2026-07-22T12:00:00Z,27,10,true,405
+P-E0120,Dresscode buat penonton yang mau masuk venue ada aturan khusus gak? min,instagram,2026-07-27T14:31:00Z,41,7,true,3881

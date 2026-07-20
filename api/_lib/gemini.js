@@ -20,16 +20,6 @@ function getClient() {
   return client;
 }
 
-/**
- * Memanggil Gemini dan memaksa output JSON sesuai responseSchema.
- * Mencoba MODELS secara berurutan; pindah ke model berikutnya hanya kalau
- * error-nya termasuk FALLBACK_STATUSES (429/500/503).
- * @param {object} opts
- * @param {string} opts.systemInstruction
- * @param {string} opts.prompt
- * @param {object} [opts.responseSchema]
- * @param {number} [opts.temperature]
- */
 async function generateJSON({ systemInstruction, prompt, responseSchema, temperature = 0.8 }) {
   const ai = getClient();
 

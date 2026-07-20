@@ -1,8 +1,6 @@
 const { generateJSON } = require("./_lib/gemini");
 const { loadRules } = require("./_lib/loadContext");
 
-// Rubric brand-fit yang dipakai LLM-as-judge untuk menilai konten hasil generate.
-// Diturunkan langsung dari rules.md (Kepribadian Brand, istilah wajib, aturan per format, hard rules).
 const RUBRIC_CRITERIA = [
   {
     key: "tone_energy",
@@ -58,12 +56,30 @@ function contentToText(content) {
   return String(content || "");
 }
 
-// Cek deterministik (bukan dinilai AI) apakah konten masih punya placeholder kosong
-// seperti [HARGA TIKET] atau [TANGGAL]. Kalau ada, konten belum siap posting - ini fakta
-// yang bisa dipastikan lewat kode, tidak perlu (dan tidak boleh) dipercayakan ke AI judge.
 function findUnfilledPlaceholders(text) {
   const matches = text.match(/\[([^\[\]]+)\]/g) || [];
   return [...new Set(matches)];
+}
+
+const OVERPROMISE_PATTERNS = [
+  /dijamin\s+(menang|juara|naik\s*rank|masuk\s*final)/i,
+  /pasti\s+(menang|juara)/i,
+  /100%\s*(tanpa|no)\s*lag/i,
+  /tanpa\s*lag\s*sama\s*sekali/i,
+  /(server|koneksi)\s*(pasti|dijamin)?\s*(tidak|gak|nggak)\s*(bakal|akan)?\s*(nge)?lag/i,
+];
+
+function findOverpromiseViolations(text) {
+  const hits = OVERPROMISE_PATTERNS.map((re) => text.match(re)).filter(Boolean).map((m) => m[0]);
+  return [...new Set(hits)];
+}
+
+const SCREAMING_TEXT_ALLOWLIST = new Set(["CTA", "GG", "WA", "IG", "VIP", "EO", "FAQ", "MLBB"]);
+const SCREAMING_TEXT_MAX = 2;
+
+function countScreamingWords(text) {
+  const tokens = text.match(/\b[A-Z]{3,}\b/g) || [];
+  return tokens.filter((t) => !SCREAMING_TEXT_ALLOWLIST.has(t));
 }
 
 module.exports = async (req, res) => {
@@ -118,25 +134,33 @@ harus persis salah satu dari: ${RUBRIC_CRITERIA.map((c) => `"${c.key}"`).join(",
       temperature: 0.2,
     });
 
-    // Lampirkan label rubric supaya frontend tidak perlu hardcode ulang.
     const labelMap = Object.fromEntries(RUBRIC_CRITERIA.map((c) => [c.key, c.label]));
     if (result && result.criteria && result.criteria.length) {
       result.criteria = result.criteria.map((c) => ({ ...c, label: labelMap[c.key] || c.key }));
 
-      // Hitung ulang overall_score & verdict di kode (bukan percaya mentah-mentah ke
-      // aritmatika LLM) supaya tidak ada kasus skor rata-rata & verdict yang saling kontradiksi.
       const avg = result.criteria.reduce((sum, c) => sum + Number(c.score || 0), 0) / result.criteria.length;
       result.overall_score = Math.round(avg * 10) / 10;
       result.verdict = result.overall_score >= 3.5 ? "approved" : "needs_revision";
 
-      // Placeholder kosong = belum siap posting, TERLEPAS dari bagus tidaknya skor brand-fit.
-      // Ini paksa di kode (bukan minta AI menilai kelengkapan info), supaya tidak ada kasus
-      // konten dengan banyak [XXXX] tetap lolos "approved" cuma karena nadanya sudah pas.
       const unfilled = findUnfilledPlaceholders(contentText);
       if (unfilled.length) {
         result.verdict = "needs_revision";
         result.unfilled_placeholders = unfilled;
         result.summary = `${result.summary || ""} Catatan tambahan: konten ini masih punya ${unfilled.length} placeholder kosong (${unfilled.join(", ")}) yang wajib diisi sebelum posting - verdict otomatis diturunkan ke "needs_revision" terlepas dari skor brand-fit-nya.`.trim();
+      }
+
+      const overpromise = findOverpromiseViolations(contentText);
+      if (overpromise.length) {
+        result.verdict = "needs_revision";
+        result.overpromise_violations = overpromise;
+        result.summary = `${result.summary || ""} Catatan tambahan: konten ini mengandung klaim overpromise/tidak bisa dipastikan (${overpromise.join(", ")}) yang dilarang di hard rules - verdict otomatis diturunkan ke "needs_revision".`.trim();
+      }
+
+      const screaming = countScreamingWords(contentText);
+      if (screaming.length > SCREAMING_TEXT_MAX) {
+        result.verdict = "needs_revision";
+        result.screaming_text_violations = [...new Set(screaming)];
+        result.summary = `${result.summary || ""} Catatan tambahan: konten ini punya ${screaming.length} kata SCREAMING TEXT (maks ${SCREAMING_TEXT_MAX} kata penekanan) - verdict otomatis diturunkan ke "needs_revision".`.trim();
       }
     }
 

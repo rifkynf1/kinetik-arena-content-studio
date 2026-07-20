@@ -1,16 +1,10 @@
 const { generateJSON } = require('./_lib/gemini');
 const { loadComments } = require('./_lib/loadContext');
 
-// Dataset lokal yang boleh dipilih lewat dropdown (allowlist supaya datasetName
-// dari request body tidak bisa dipakai untuk baca file sembarangan di server).
 const ALLOWED_DATASETS = new Set(['comments_dataset.csv', 'comments_event_offline.csv']);
-
-// Ambang batas sederhana untuk menandai "lonjakan negatif" per minggu.
 const NEGATIVE_SPIKE_THRESHOLD = 0.3;
-// Minimal jumlah komentar dalam 1 minggu supaya rasio-nya dianggap valid untuk dinilai (hindari 1 komentar negatif = "spike").
 const MIN_SAMPLE_PER_WEEK = 3;
 
-// Skema output untuk zero-shot classification sentimen + tema.
 const RESPONSE_SCHEMA = {
   type: 'object',
   properties: {
@@ -55,7 +49,7 @@ const RESPONSE_SCHEMA = {
 function getWeekStart(isoTimestamp) {
   const date = new Date(isoTimestamp);
   if (Number.isNaN(date.getTime())) return null;
-  const dayOffset = (date.getUTCDay() + 6) % 7; // Senin = 0
+  const dayOffset = (date.getUTCDay() + 6) % 7;
   date.setUTCDate(date.getUTCDate() - dayOffset);
   date.setUTCHours(0, 0, 0, 0);
   return date;
@@ -65,11 +59,6 @@ function toDateStr(date) {
   return date.toISOString().slice(0, 10);
 }
 
-/**
- * Mengelompokkan hasil klasifikasi per minggu (berdasarkan timestamp asli komentar)
- * dan menandai minggu dengan rasio negatif >= NEGATIVE_SPIKE_THRESHOLD sebagai "spike".
- * Pure post-processing di JS, tidak ada panggilan LLM tambahan.
- */
 function buildWeeklySummary(items, timestampMap) {
   const weekBuckets = new Map();
 
@@ -122,7 +111,6 @@ module.exports = async (req, res) => {
     const timestampMap = {};
 
     if (req.method === 'POST' && req.body && req.body.customCsvText) {
-      // Opsi 1: user upload CSV custom (kolom fleksibel: post_id/id, comment_text/comment, channel/platform, timestamp opsional)
       const Papa = require('papaparse');
       const { data } = Papa.parse(req.body.customCsvText, { header: true, skipEmptyLines: true });
       if (!data || !data.length) throw new Error('CSV kosong atau format salah. Pastikan memiliki header (post_id, comment_text, channel).');
@@ -137,7 +125,6 @@ module.exports = async (req, res) => {
         })
         .join('\n');
     } else {
-      // Opsi 2: dropdown pilih dataset lokal (dibatasi allowlist)
       const requested = req.body && req.body.datasetName;
       const datasetName = ALLOWED_DATASETS.has(requested) ? requested : 'comments_dataset.csv';
       const comments = loadComments(datasetName);
@@ -188,10 +175,6 @@ persis dengan nomor id komentar aslinya (dalam bentuk string).`;
         text: textMap[String(item.id)] || '',
       }));
       result.weekly_summary = buildWeeklySummary(result.items, timestampMap);
-
-      // Hitung ulang summary dari items aktual (bukan percaya mentah-mentah ke
-      // penjumlahan LLM), supaya total/positive/negative/neutral selalu konsisten
-      // dengan daftar item yang benar-benar dikembalikan.
       result.summary = result.items.reduce(
         (acc, item) => {
           acc.total += 1;

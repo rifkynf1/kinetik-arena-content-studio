@@ -29,10 +29,6 @@ function setBusy(button, busy, busyLabel, idleLabel) {
   button.textContent = busy ? busyLabel : idleLabel;
 }
 
-// Escape teks sebelum disisipkan ke innerHTML (aman untuk posisi teks maupun di dalam
-// atribut HTML) - wajib dipakai untuk teks dari AI atau dari CSV yang bisa di-upload
-// user sendiri, supaya tidak ada celah XSS (mis. komentar CSV berisi
-// "<img src=x onerror=...>" atau "\" onmouseover=..." ikut dieksekusi sebagai HTML).
 function escapeHtml(str) {
   return String(str === null || str === undefined ? "" : str)
     .replace(/&/g, "&amp;")
@@ -42,8 +38,6 @@ function escapeHtml(str) {
     .replace(/'/g, "&#39;");
 }
 
-// Alert bertema gelap senada UI, dipakai buat ganti alert() bawaan browser supaya
-// pesannya lebih informatif (judul + penjelasan + saran aksi), bukan cuma teks datar.
 function showAlert({ icon = "info", title, text, confirmText = "Oke, Mengerti" }) {
   if (typeof Swal === "undefined") {
     window.alert(`${title ? title + "\n" : ""}${text || ""}`);
@@ -61,9 +55,6 @@ function showAlert({ icon = "info", title, text, confirmText = "Oke, Mengerti" }
   });
 }
 
-// Toggle tampilan "terkunci" (redup, cursor not-allowed) tanpa pakai atribut `disabled`
-// bawaan HTML - sengaja begitu supaya tombol TETAP bisa diklik untuk memicu pesan
-// informatif ("kenapa ini belum bisa dipakai"), bukan cuma diam tidak merespon.
 function setBtnLocked(btn, locked) {
   if (!btn) return;
   btn.dataset.locked = locked ? "true" : "false";
@@ -76,15 +67,13 @@ function clearApprovalStatuses() {
   Object.keys(approved).forEach((k) => (approved[k] = null));
   document.querySelectorAll("[data-spotcheck]").forEach((cb) => {
     cb.checked = false;
-    cb.disabled = true; // verdict evaluasi lama sudah tidak relevan buat konten baru
+    cb.disabled = true;
     syncSpotCheckVisual(cb.dataset.spotcheck);
   });
 }
 
-// Kunci semua tombol Setujui & Copy sejak awal load (sebelum ada evaluasi/spot-check).
 document.querySelectorAll(".approve-btn, [data-requires-spotcheck]").forEach((btn) => setBtnLocked(btn, true));
 
-// Render badge jadwal upload dari currentCalendarSuggestion, bisa dipanggil ulang.
 function renderScheduleBadges() {
   ["whatsapp", "discord_telegram", "twitter_thread", "instagram_caption"].forEach((key) => {
     const el = document.querySelector(`[data-schedule="${key}"]`);
@@ -100,7 +89,6 @@ function renderScheduleBadges() {
   });
 }
 
-// Thread disimpan di textarea sebagai teks, tiap tweet dipisah baris kosong ("\n\n")
 function threadArrayToText(arr) {
   return (arr || []).join("\n\n");
 }
@@ -108,7 +96,6 @@ function threadTextToArray(text) {
   return text.split(/\n\s*\n/).map((t) => t.trim()).filter(Boolean);
 }
 
-// Parser tanggal fleksibel: "2026-08-20", "20/08/2026", atau "20 Agustus 2026".
 const ID_MONTHS = {
   januari: 0, februari: 1, maret: 2, april: 3, mei: 4, juni: 5,
   juli: 6, agustus: 7, september: 8, oktober: 9, november: 10, desember: 11,
@@ -127,8 +114,6 @@ function parseFlexibleDate(str) {
   return null;
 }
 
-// H- per platform (bukan seragam) - strategi bertahap: Twitter teaser paling awal,
-// Instagram reminder terakhir paling dekat ke tanggal registrasi.
 const UPLOAD_SCHEDULE_DEFAULTS = {
   twitter_thread: { daysBefore: 4, time: "09:00" },
   discord_telegram: { daysBefore: 3, time: "17:00" },
@@ -136,7 +121,6 @@ const UPLOAD_SCHEDULE_DEFAULTS = {
   instagram_caption: { daysBefore: 1, time: "12:00" },
 };
 
-// Dihitung dari tanggal event PALING AWAL yang diisi (biasanya tanggal registrasi).
 function recomputeCalendarFromFilledDates(filledDates) {
   const validDates = filledDates.map(parseFlexibleDate).filter((d) => d && !Number.isNaN(d.getTime()));
   if (!validDates.length) return;
@@ -160,18 +144,12 @@ function recomputeCalendarFromFilledDates(filledDates) {
   });
 }
 
-// ---- Deteksi placeholder yang belum diisi (mis. [NAMA VENUE], [LINK INFO]) ----
-// Cari semua "[XXX]" di 4 textarea, kumpulkan nama placeholder yang unik, lalu tampilkan
-// input kecil per placeholder supaya bisa diisi & diganti langsung (find-and-replace,
-// tanpa panggil AI lagi) di semua kartu sekaligus.
 function scanPlaceholders() {
   const found = new Set();
   allEditTextareas.forEach((ta) => {
     const matches = ta.value.match(/\[([^\[\]]+)\]/g) || [];
     matches.forEach((m) => found.add(m.slice(1, -1)));
   });
-  // [TANGGAL MENYUSUL] di badge jadwal upload sengaja tidak ikut discan - otomatis
-  // kehitung ulang lewat recomputeCalendarFromFilledDates, bukan diisi manual.
 
   if (!found.size) {
     placeholderPanel.classList.add("hidden");
@@ -227,6 +205,17 @@ generateBtn.addEventListener("click", async () => {
   generateStatus.className = "text-sm text-slate-400";
   clearApprovalStatuses();
 
+  resultSection.classList.add("hidden");
+  resultSection.classList.remove("flex");
+  editWhatsapp.value = "";
+  editDiscord.value = "";
+  editTwitter.value = "";
+  editInstagram.value = "";
+  currentCalendarSuggestion = null;
+  renderScheduleBadges();
+  placeholderPanel.classList.add("hidden");
+  placeholderInputs.innerHTML = "";
+
   try {
     const res = await fetch("/api/generate", {
       method: "POST",
@@ -242,7 +231,6 @@ generateBtn.addEventListener("click", async () => {
     editTwitter.value = threadArrayToText(twitter_thread);
     editInstagram.value = instagram_caption || "";
 
-    // Jadwal upload disarankan, ditampilkan sebagai baris kecil di tiap kartu format.
     currentCalendarSuggestion = calendar_suggestion || null;
     renderScheduleBadges();
 
@@ -259,7 +247,6 @@ generateBtn.addEventListener("click", async () => {
   }
 });
 
-// Nama format yang ditampilkan ke user (dipakai supaya pesan lebih spesifik daripada "di kartu ini").
 const formatLabels = {
   whatsapp: "WhatsApp",
   discord_telegram: "Discord/Telegram",
@@ -293,12 +280,6 @@ document.querySelectorAll(".approve-btn").forEach((btn) => {
   });
 });
 
-// ---- Human Spot-Check: gerbang wajib sebelum tombol Setujui & Copy bisa dipakai ----
-// (bukan submit ke server - cuma state lokal browser, ikut tersimpan ke file .txt
-// begitu tombol Export diklik). Sengaja nonaktif sampai reviewer benar-benar
-// mencentang kotak ini, supaya tidak asal approve/copy tanpa direview.
-// checkbox.disabled = true berarti verdict evaluasi BELUM "approved" - spot-check tidak
-// boleh dicentang sampai konten benar-benar lolos evaluasi AI (kebijakan: perketat total).
 function syncSpotCheckVisual(key) {
   const checkbox = document.querySelector(`[data-spotcheck="${key}"]`);
   if (!checkbox) return;
@@ -322,20 +303,14 @@ function syncSpotCheckVisual(key) {
   setBtnLocked(copyBtn, !checkbox.checked);
 }
 
-// Kunci checkbox spot-check dari awal (sebelum ada evaluasi sama sekali, verdict belum ada).
 document.querySelectorAll("[data-spotcheck]").forEach((checkbox) => {
   checkbox.disabled = true;
   const key = checkbox.dataset.spotcheck;
   syncSpotCheckVisual(key);
 
-  // "change" cukup untuk interaksi normal, tapi "click" ditambah sebagai jaring pengaman
-  // supaya visual selalu ikut ter-update walau ada quirk render CSS peer-checked di browser.
   checkbox.addEventListener("change", () => syncSpotCheckVisual(key));
   checkbox.addEventListener("click", () => setTimeout(() => syncSpotCheckVisual(key), 0));
 
-  // Kalau checkbox lagi disabled (verdict belum approved) dan label-nya diklik, kasih tahu
-  // kenapa - checkbox disabled bawaan HTML tidak bisa memicu event apa pun di dirinya sendiri,
-  // makanya listener ini dipasang di elemen <label> pembungkusnya.
   const label = checkbox.closest("label");
   if (label) {
     label.addEventListener("click", (e) => {
@@ -444,9 +419,6 @@ document.querySelectorAll(".evaluate-btn").forEach((btn) => {
       verdictEl.className = isApproved ? "text-emerald-400 font-bold" : "text-rose-400 font-bold";
       summaryEl.textContent = summary || "";
 
-      // Kebijakan diperketat: human spot-check cuma bisa dicentang kalau verdict AI "approved".
-      // Kalau "needs_revision" (skor rendah ATAU masih ada placeholder kosong), checkbox
-      // dikunci lagi (dan di-uncheck kalau sebelumnya sempat tercentang dari evaluasi lama).
       const spotCheckbox = document.querySelector(`[data-spotcheck="${key}"]`);
       if (spotCheckbox) {
         spotCheckbox.disabled = !isApproved;

@@ -26,6 +26,7 @@ jadi ikuti aturan berikut **tanpa terkecuali**.
 - Bisa lebih panjang & detail: jadwal lengkap, format turnamen, prize pool, cara daftar/war tiket.
 - Gunakan poin-poin dengan emoji sebagai bullet, mudah discan di HP.
 - Selalu sertakan CTA dan link/kontak (pakai placeholder kalau brief tidak menyediakan).
+- Kalau brief cuma kasih SATU tanggal (apa pun istilahnya di brief, mis. "war tiket", "match day", "tanggal acara"), pakai SATU baris tanggal saja sesuai istilah itu. JANGAN pecah jadi baris "Registrasi" dan "Match Day" terpisah kalau brief tidak pernah membedakan keduanya, itu bikin satu info kelihatan dobel (satu terisi, satu jadi placeholder kosong padahal maksudnya sama).
 
 ### Pengumuman Discord / Telegram
 - Nada sedikit lebih "official komunitas": tetap hype, tapi terasa seperti pengumuman resmi dari admin server/grup.

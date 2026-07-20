@@ -155,7 +155,7 @@ function recomputeCalendarFromFilledDates(filledDates) {
       date: dateStr,
       day: uploadDate.toLocaleDateString("id-ID", { weekday: "long" }),
       time,
-      reasoning: `Rekomendasi otomatis (H-${daysBefore}) dihitung dari tanggal event yang baru diisi. Klik "GENERATE KONTEN" ulang kalau butuh rekomendasi yang lebih spesifik sesuai konteks brief.`,
+      reasoning: `Perkiraan otomatis, H-${daysBefore} dari tanggal event yang baru diisi.`,
     };
   });
 }

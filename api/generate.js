@@ -243,6 +243,13 @@ ATURAN ANTI-MENGARANG (PALING PENTING, sering dilanggar - baca sampai habis):
   [TANGGAL REGISTRASI] dan [TANGGAL MATCH DAY] - JANGAN PERNAH pakai [TANGGAL] generik untuk
   keduanya, karena kalau panitia isi placeholder itu nanti, kedua tanggal akan ikut jadi sama
   padahal seharusnya beda.
+- Sebaliknya, JANGAN memecah satu info di brief jadi beberapa kategori yang tidak pernah
+  dibedakan brief-nya sendiri. Contoh kesalahan: brief cuma bilang "war tiket 15 September
+  2026" (SATU tanggal, tidak menyebut registrasi/match day terpisah), tapi hasilnya malah
+  menulis "War Tiket: 15 September 2026" DAN "Registrasi: [TANGGAL REGISTRASI]" DAN "Match
+  Day: [TANGGAL MATCH DAY]" - itu bikin satu info kelihatan tiga kali, dua di antaranya
+  placeholder kosong yang tidak perlu. Kalau brief cuma kasih satu tanggal, pakai satu baris
+  tanggal sesuai istilah yang dipakai brief, jangan tambah kategori tanggal lain.
 - Aturan yang sama berlaku untuk calendar_suggestion. Kalau brief menyebutkan tanggal event
   (match day/registrasi/war tiket), tentukan tanggal upload yang masuk akal beberapa hari
   SEBELUM tanggal itu. TAPI kalau brief SAMA SEKALI TIDAK menyebutkan tanggal event apa pun,

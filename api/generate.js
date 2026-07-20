@@ -310,14 +310,20 @@ Balas HANYA dalam format JSON sesuai schema yang diberikan.`;
 
     // Hitung ulang nama hari dari tanggal (bukan percaya mentah-mentah ke AI) supaya
     // tidak ada kasus AI salah sebut hari - misal bilang tanggalnya Rabu padahal
-    // tanggal itu sebenarnya jatuh di hari Kamis.
+    // tanggal itu sebenarnya jatuh di hari Kamis. Kalau date-nya bukan tanggal asli
+    // (masih placeholder [TANGGAL MENYUSUL] karena brief belum sebut tanggal event),
+    // paksa day & time ikut kosong juga - AI kadang tetap ngarang jam spesifik (mis.
+    // "19:00") walau tanggalnya sendiri belum diketahui, itu ikut hallucination juga.
     if (result && result.calendar_suggestion) {
       for (const key of Object.keys(result.calendar_suggestion)) {
         const item = result.calendar_suggestion[key];
-        if (!item || !item.date) continue;
-        const parsed = new Date(`${item.date}T00:00:00`);
-        if (!Number.isNaN(parsed.getTime())) {
+        if (!item) continue;
+        const parsed = item.date ? new Date(`${item.date}T00:00:00`) : null;
+        if (parsed && !Number.isNaN(parsed.getTime())) {
           item.day = parsed.toLocaleDateString('id-ID', { weekday: 'long', timeZone: 'Asia/Jakarta' });
+        } else {
+          item.day = '';
+          item.time = '';
         }
       }
     }

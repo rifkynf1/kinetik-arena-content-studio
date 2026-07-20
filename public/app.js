@@ -1,5 +1,6 @@
 // ---- State ----
 const approved = { whatsapp: null, discord_telegram: null, twitter_thread: null, instagram_caption: null };
+let currentCalendarSuggestion = null;
 
 // ---- Elements ----
 const briefInput = document.getElementById("briefInput");
@@ -83,6 +84,24 @@ function clearApprovalStatuses() {
 // Kunci semua tombol Setujui & Copy sejak awal load (sebelum ada evaluasi/spot-check).
 document.querySelectorAll(".approve-btn, [data-requires-spotcheck]").forEach((btn) => setBtnLocked(btn, true));
 
+// Tampilkan jadwal upload di badge tiap kartu. Dipisah jadi fungsi sendiri (bukan cuma
+// inline di dalam generateBtn) supaya bisa dipanggil ulang setelah placeholder diisi,
+// karena badge ini render dari state currentCalendarSuggestion, bukan dari textarea.
+function renderScheduleBadges() {
+  ["whatsapp", "discord_telegram", "twitter_thread", "instagram_caption"].forEach((key) => {
+    const el = document.querySelector(`[data-schedule="${key}"]`);
+    if (!el) return;
+    const sched = currentCalendarSuggestion && currentCalendarSuggestion[key];
+    if (!sched) {
+      el.textContent = "";
+      return;
+    }
+    el.textContent = sched.day && sched.time
+      ? `Upload: ${sched.day}, ${sched.date} pukul ${sched.time} WIB. ${sched.reasoning || ""}`
+      : `Jadwal upload: ${sched.reasoning || "Belum bisa ditentukan, tanggal event belum diketahui dari brief."}`;
+  });
+}
+
 // Thread disimpan di textarea sebagai teks, tiap tweet dipisah baris kosong ("\n\n")
 function threadArrayToText(arr) {
   return (arr || []).join("\n\n");
@@ -99,6 +118,12 @@ function scanPlaceholders() {
   const found = new Set();
   allEditTextareas.forEach((ta) => {
     const matches = ta.value.match(/\[([^\[\]]+)\]/g) || [];
+    matches.forEach((m) => found.add(m.slice(1, -1)));
+  });
+  // Jadwal upload (badge, bukan textarea) juga bisa berisi placeholder seperti
+  // [TANGGAL MENYUSUL] kalau brief belum sebut tanggal event - ikut discan juga.
+  Object.values(currentCalendarSuggestion || {}).forEach((sched) => {
+    const matches = (sched.date || "").match(/\[([^\[\]]+)\]/g) || [];
     matches.forEach((m) => found.add(m.slice(1, -1)));
   });
 
@@ -133,7 +158,19 @@ applyPlaceholdersBtn.addEventListener("click", () => {
     allEditTextareas.forEach((ta) => {
       ta.value = ta.value.split(token).join(value);
     });
+
+    // Kalau token yang sama juga muncul di tanggal jadwal upload (mis. [TANGGAL
+    // MENYUSUL]), ganti juga supaya badge-nya ikut update, bukan cuma textarea.
+    Object.values(currentCalendarSuggestion || {}).forEach((sched) => {
+      if (!sched.date || !sched.date.includes(token)) return;
+      sched.date = sched.date.split(token).join(value);
+      const parsed = new Date(`${sched.date}T00:00:00`);
+      sched.day = Number.isNaN(parsed.getTime())
+        ? ""
+        : parsed.toLocaleDateString("id-ID", { weekday: "long", timeZone: "Asia/Jakarta" });
+    });
   });
+  renderScheduleBadges();
   scanPlaceholders();
 });
 
@@ -167,14 +204,8 @@ generateBtn.addEventListener("click", async () => {
     editInstagram.value = instagram_caption || "";
 
     // Jadwal upload disarankan, ditampilkan sebagai baris kecil di tiap kartu format.
-    ["whatsapp", "discord_telegram", "twitter_thread", "instagram_caption"].forEach((key) => {
-      const el = document.querySelector(`[data-schedule="${key}"]`);
-      if (!el) return;
-      const sched = calendar_suggestion && calendar_suggestion[key];
-      el.textContent = sched
-        ? `Upload: ${sched.day}, ${sched.date} pukul ${sched.time} WIB. ${sched.reasoning}`
-        : "";
-    });
+    currentCalendarSuggestion = calendar_suggestion || null;
+    renderScheduleBadges();
 
     resultSection.classList.remove("hidden");
     resultSection.classList.add("flex");

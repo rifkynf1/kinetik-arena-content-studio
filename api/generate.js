@@ -223,6 +223,12 @@ ATURAN ANTI-MENGARANG (PALING PENTING, sering dilanggar - baca sampai habis):
   SEMUA angka itu tidak ada di brief, jadi SEMUA itu salah dan harus jadi placeholder.
 - Sebaliknya: info yang MEMANG disebutkan di brief (misal brief bilang "prize pool
   Rp20.000.000") WAJIB ditulis apa adanya, jangan diubah jadi placeholder juga.
+- Kalau ada LEBIH DARI SATU info dengan jenis sama tapi beda makna dan sama-sama tidak
+  disebut di brief (mis. tanggal registrasi DAN tanggal match day, atau link daftar DAN
+  link streaming), WAJIB pakai nama placeholder yang beda untuk masing-masing, contoh
+  [TANGGAL REGISTRASI] dan [TANGGAL MATCH DAY] - JANGAN PERNAH pakai [TANGGAL] generik untuk
+  keduanya, karena kalau panitia isi placeholder itu nanti, kedua tanggal akan ikut jadi sama
+  padahal seharusnya beda.
 - Aturan yang sama berlaku untuk calendar_suggestion. Kalau brief menyebutkan tanggal event
   (match day/registrasi/war tiket), tentukan tanggal upload yang masuk akal beberapa hari
   SEBELUM tanggal itu. TAPI kalau brief SAMA SEKALI TIDAK menyebutkan tanggal event apa pun,
@@ -324,6 +330,11 @@ Balas HANYA dalam format JSON sesuai schema yang diberikan.`;
         } else {
           item.day = '';
           item.time = '';
+          // Reasoning dari AI kadang tetap kedengaran seolah ada rekomendasi (mis.
+          // "upload malam hari saat komunitas santai") padahal date-nya sendiri belum
+          // ada. Timpa dengan pesan yang jelas menyebut alasan sebenarnya, jangan
+          // percaya reasoning bebas dari AI untuk kasus ini.
+          item.reasoning = 'Belum bisa memberikan rekomendasi jadwal upload karena tanggal match/event belum ditentukan di brief. Isi placeholder tanggal terlebih dahulu untuk mendapat rekomendasi yang akurat.';
         }
       }
     }

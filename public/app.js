@@ -72,17 +72,20 @@ function clearApprovalStatuses() {
   });
   document.querySelectorAll("[data-eval-panel]").forEach((panel) => {
     panel.classList.add("hidden");
+    panel.classList.remove("opacity-50");
     const key = panel.dataset.evalPanel;
     const criteriaEl = document.querySelector(`[data-eval-criteria="${key}"]`);
     const overallEl = document.querySelector(`[data-eval-overall="${key}"]`);
     const verdictEl = document.querySelector(`[data-eval-verdict="${key}"]`);
     const summaryEl = document.querySelector(`[data-eval-summary="${key}"]`);
     const violationsEl = document.querySelector(`[data-eval-violations="${key}"]`);
+    const staleEl = document.querySelector(`[data-eval-stale="${key}"]`);
     if (criteriaEl) criteriaEl.innerHTML = "";
     if (overallEl) overallEl.textContent = "";
     if (verdictEl) verdictEl.textContent = "";
     if (summaryEl) summaryEl.textContent = "";
     if (violationsEl) violationsEl.innerHTML = "";
+    if (staleEl) staleEl.classList.add("hidden");
   });
 }
 
@@ -203,6 +206,12 @@ applyPlaceholdersBtn.addEventListener("click", () => {
   if (filledDateValues.length) recomputeCalendarFromFilledDates(filledDateValues);
   renderScheduleBadges();
   scanPlaceholders();
+
+  allEditTextareas.forEach((ta) => {
+    const key = Object.keys(evalTextareaMap).find((k) => evalTextareaMap[k] === ta);
+    const panel = document.querySelector(`[data-eval-panel="${key}"]`);
+    if (key && panel && !panel.classList.contains("hidden")) runEvaluation(key, { silent: true });
+  });
 });
 
 // ---- Generate Content ----
@@ -380,94 +389,120 @@ const evalTextareaMap = {
   instagram_caption: editInstagram,
 };
 
-document.querySelectorAll(".evaluate-btn").forEach((btn) => {
-  btn.addEventListener("click", async () => {
-    const key = btn.dataset.evaluate;
-    const textarea = evalTextareaMap[key];
-    const panel = document.querySelector(`[data-eval-panel="${key}"]`);
-    const criteriaEl = document.querySelector(`[data-eval-criteria="${key}"]`);
-    const overallEl = document.querySelector(`[data-eval-overall="${key}"]`);
-    const verdictEl = document.querySelector(`[data-eval-verdict="${key}"]`);
-    const summaryEl = document.querySelector(`[data-eval-summary="${key}"]`);
-    const violationsEl = document.querySelector(`[data-eval-violations="${key}"]`);
+function markEvalStale(key) {
+  const panel = document.querySelector(`[data-eval-panel="${key}"]`);
+  if (!panel || panel.classList.contains("hidden")) return;
 
-    const content = key === "twitter_thread" ? threadTextToArray(textarea.value) : textarea.value;
-    if (!content || (Array.isArray(content) && !content.length)) {
+  const staleEl = document.querySelector(`[data-eval-stale="${key}"]`);
+  if (staleEl) staleEl.classList.remove("hidden");
+  panel.classList.add("opacity-50");
+
+  const spotCheckbox = document.querySelector(`[data-spotcheck="${key}"]`);
+  if (spotCheckbox) {
+    spotCheckbox.disabled = true;
+    spotCheckbox.checked = false;
+    syncSpotCheckVisual(key);
+  }
+}
+
+async function runEvaluation(key, { silent = false } = {}) {
+  const btn = document.querySelector(`.evaluate-btn[data-evaluate="${key}"]`);
+  const textarea = evalTextareaMap[key];
+  const panel = document.querySelector(`[data-eval-panel="${key}"]`);
+  const staleEl = document.querySelector(`[data-eval-stale="${key}"]`);
+  const criteriaEl = document.querySelector(`[data-eval-criteria="${key}"]`);
+  const overallEl = document.querySelector(`[data-eval-overall="${key}"]`);
+  const verdictEl = document.querySelector(`[data-eval-verdict="${key}"]`);
+  const summaryEl = document.querySelector(`[data-eval-summary="${key}"]`);
+  const violationsEl = document.querySelector(`[data-eval-violations="${key}"]`);
+
+  const content = key === "twitter_thread" ? threadTextToArray(textarea.value) : textarea.value;
+  if (!content || (Array.isArray(content) && !content.length)) {
+    if (!silent) {
       showAlert({
         icon: "warning",
         title: "Konten Masih Kosong",
         text: "Belum ada teks di kartu ini untuk dievaluasi. Klik \"GENERATE KONTEN\" dulu di bagian atas, atau isi manual dulu sebelum menekan Evaluasi.",
       });
-      return;
     }
+    return;
+  }
 
-    const original = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = "MENILAI...";
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "MENILAI...";
 
-    try {
-      const res = await fetch("/api/evaluate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ format: key, content, brief: briefInput.value }),
-      });
-      const payload = await res.json();
-      if (!res.ok || !payload.ok) throw new Error(payload.error || "Gagal mengevaluasi konten.");
+  try {
+    const res = await fetch("/api/evaluate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ format: key, content, brief: briefInput.value }),
+    });
+    const payload = await res.json();
+    if (!res.ok || !payload.ok) throw new Error(payload.error || "Gagal mengevaluasi konten.");
 
-      const { criteria, overall_score, verdict, summary, unfilled_placeholders, overpromise_violations } = payload.data;
+    const { criteria, overall_score, verdict, summary, unfilled_placeholders, overpromise_violations } = payload.data;
 
-      criteriaEl.innerHTML = (criteria || [])
+    criteriaEl.innerHTML = (criteria || [])
+      .map(
+        (c) => `
+      <div class="flex items-start justify-between gap-3">
+        <span class="text-gray-300">${escapeHtml(c.label || c.key)}</span>
+        <span class="text-amber-300 font-bold whitespace-nowrap">${escapeHtml(c.score)}/5</span>
+      </div>
+      <p class="text-gray-500 text-[11px] -mt-1">${escapeHtml(c.comment || "")}</p>
+    `
+      )
+      .join("");
+
+    overallEl.textContent = `Overall: ${overall_score}/5`;
+    const isApproved = verdict === "approved";
+    verdictEl.textContent = isApproved ? "✔ APPROVED" : "✎ NEEDS REVISION";
+    verdictEl.className = isApproved ? "text-emerald-400 font-bold" : "text-rose-400 font-bold";
+    summaryEl.textContent = summary || "";
+
+    if (violationsEl) {
+      const groups = [
+        { label: "Placeholder belum diisi", items: unfilled_placeholders },
+        { label: "Klaim overpromise", items: overpromise_violations },
+      ].filter((g) => g.items && g.items.length);
+
+      violationsEl.innerHTML = groups
         .map(
-          (c) => `
-        <div class="flex items-start justify-between gap-3">
-          <span class="text-gray-300">${escapeHtml(c.label || c.key)}</span>
-          <span class="text-amber-300 font-bold whitespace-nowrap">${escapeHtml(c.score)}/5</span>
-        </div>
-        <p class="text-gray-500 text-[11px] -mt-1">${escapeHtml(c.comment || "")}</p>
+          (g) => `
+        <p class="text-rose-400"><span class="font-bold">${escapeHtml(g.label)}:</span> ${g.items.map((v) => `"${escapeHtml(v)}"`).join(", ")}</p>
       `
         )
         .join("");
-
-      overallEl.textContent = `Overall: ${overall_score}/5`;
-      const isApproved = verdict === "approved";
-      verdictEl.textContent = isApproved ? "✔ APPROVED" : "✎ NEEDS REVISION";
-      verdictEl.className = isApproved ? "text-emerald-400 font-bold" : "text-rose-400 font-bold";
-      summaryEl.textContent = summary || "";
-
-      if (violationsEl) {
-        const groups = [
-          { label: "Placeholder belum diisi", items: unfilled_placeholders },
-          { label: "Klaim overpromise", items: overpromise_violations },
-        ].filter((g) => g.items && g.items.length);
-
-        violationsEl.innerHTML = groups
-          .map(
-            (g) => `
-          <p class="text-rose-400"><span class="font-bold">${escapeHtml(g.label)}:</span> ${g.items.map((v) => `"${escapeHtml(v)}"`).join(", ")}</p>
-        `
-          )
-          .join("");
-      }
-
-      const spotCheckbox = document.querySelector(`[data-spotcheck="${key}"]`);
-      if (spotCheckbox) {
-        spotCheckbox.disabled = !isApproved;
-        if (!isApproved) spotCheckbox.checked = false;
-        syncSpotCheckVisual(key);
-      }
-
-      panel.classList.remove("hidden");
-    } catch (err) {
-      showAlert({
-        icon: "error",
-        title: "Evaluasi Gagal",
-        text: `${err.message}. Coba klik "EVALUASI (AI JUDGE)" lagi - kalau masih gagal, kemungkinan API key Gemini belum diset atau sedang kena limit.`,
-      });
-    } finally {
-      btn.disabled = false;
-      btn.textContent = original;
     }
-  });
+
+    const spotCheckbox = document.querySelector(`[data-spotcheck="${key}"]`);
+    if (spotCheckbox) {
+      spotCheckbox.disabled = !isApproved;
+      if (!isApproved) spotCheckbox.checked = false;
+      syncSpotCheckVisual(key);
+    }
+
+    if (staleEl) staleEl.classList.add("hidden");
+    panel.classList.remove("hidden", "opacity-50");
+  } catch (err) {
+    showAlert({
+      icon: "error",
+      title: "Evaluasi Gagal",
+      text: `${err.message}. Coba klik "EVALUASI (AI JUDGE)" lagi - kalau masih gagal, kemungkinan API key Gemini belum diset atau sedang kena limit.`,
+    });
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
+
+document.querySelectorAll(".evaluate-btn").forEach((btn) => {
+  btn.addEventListener("click", () => runEvaluation(btn.dataset.evaluate));
+});
+
+Object.entries(evalTextareaMap).forEach(([key, textarea]) => {
+  textarea.addEventListener("input", () => markEvalStale(key));
 });
 
 // ---- Export ----
